@@ -1,37 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Details</title>
-    <link rel="stylesheet" href="style.css">
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Product — Body & Glow</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-
-<body class="christmas-bg">
-
-<div class="snowflakes" aria-hidden="true"></div>
-
-<header class="header">
-    <h1>Product Details</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+<body class="site-root">
+  <header class="topbar">
+    <div class="brand">Velvet Charms — Body & Glow</div>
+    <nav class="nav">
+      <a href="index.html">Home</a><a href="catalogue.html">Catalogue</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <a class="sister" href="https://velvet-charms-art-gifts.vercel.app">Sister site: Art & Gifts</a>
     </nav>
-</header>
+  </header>
 
-<section class="product-page">
-    <div id="product-container"></div>
-</section>
+  <main class="container product-page">
+    <div id="product-root"></div>
+  </main>
 
-<footer>
-    © Velvet Charms — Body & Glow
-</footer>
+  <footer class="footer">© Velvet Charms</footer>
 
-<script src="script.js"></script>
-<script>
-    loadProduct();
-</script>
+  <script>
+    function getQuery(name){ const u = new URLSearchParams(location.search); return u.get(name); }
+    function findProductById(data, id){
+      if(!data) return null;
+      for(const cat of (data.categories||[])){
+        if(cat.products){
+          for(const p of cat.products) if(p.id===id) return p;
+        }
+        if(cat.subcategories){
+          for(const sub of cat.subcategories){
+            for(const p of (sub.products||[])) if(p.id===id) return p;
+          }
+        }
+      }
+      return null;
+    }
 
-</body>
-</html>
+    fetch('catalogue.json').then(r => r.json()).then(data=>{
+      const id = getQuery('id');
+      const product = findProductById(data,id);
+      const root = document.getElementById('product-root');
+      if(!product){ root.innerHTML = '<p class="error">Product not found.</p>'; return; }
+      let out = '<div class="product-detail"><h2>'+escapeHtml(product.name)+'</h2>';
+      if(product.images && product.images.length){
+        out += '<div class="gallery">';
+        product.images.forEach(img => {
+          out += '<img src="'+img+'" onerror="this.style.display=\\'none\\'" alt="'+escapeHtml(product.name)+'">';
+        });
+        out += '</div>';
+      }
+      out += '<div class="prod-meta"><p class="price">'+(product.price?product.price+' USD':'Contact for price')+'</p>';
+      out += '<p class="desc">'+escapeHtml(product.description||'')+'</p>';
+      if(product.paymentLink) out += '<p><a class="btn buy" href="'+product.paymentLink+'" target="_blank" rel="noopener">Buy with PayPal</a></p>';
+      out += '</div></div>';
+      root.innerHTML = out;
+    }).catch(e=>{ document.getElementById('product-root').innerHTML = '<p class="error">Failed to load product.</p>'; console.error(e); });
+
+    function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  </script>
+</body></html>
