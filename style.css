@@ -1,0 +1,218 @@
+/* ------------------------------
+   GLOBAL CHRISTMAS THEME
+--------------------------------*/
+
+body.christmas-bg {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(180deg, #b30000 0%, #8c0000 100%);
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* GOLD TEXT GLOW */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffdd55, 0 0 20px #ffcc00;
+}
+
+/* Header */
+.header {
+    background: rgba(0,0,0,0.45);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid gold;
+}
+
+.header nav a {
+    margin: 0 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffe66d;
+    transition: 0.3s;
+}
+
+.header nav a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffe066;
+}
+
+/* Home Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: gold;
+    color: #8c0000;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 10px gold, 0 0 20px gold;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #ffe066;
+    box-shadow: 0 0 20px #ffc600;
+}
+
+/* Catalogue Page */
+.catalogue-grid {
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    background: rgba(0,0,0,0.35);
+    border: 2px solid #ffd700;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px gold;
+    background: rgba(0,0,0,0.55);
+}
+
+/* Product List */
+.product-grid {
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: rgba(0,0,0,0.35);
+    border: 2px solid #ffe66d;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.04);
+    background: rgba(0,0,0,0.55);
+    box-shadow: 0 0 20px #ffd700;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Product Page */
+.product-page {
+    padding: 40px;
+}
+
+#product-container img {
+    max-width: 400px;
+    width: 100%;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    border: 3px solid gold;
+}
+
+.price {
+    font-size: 1.7rem;
+    color: #ffeb8a;
+}
+
+.pay-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 26px;
+    background: gold;
+    color: #8c0000;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    box-shadow: 0 0 15px gold;
+    transition: 0.3s;
+}
+
+.pay-btn:hover {
+    background: #ffe066;
+    box-shadow: 0 0 25px #ffd700;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.45);
+    border-top: 2px solid gold;
+}
+
+/* --------------------------------
+   SNOWFLAKE ANIMATION
+---------------------------------*/
+
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.snowflakes::before,
+.snowflakes::after {
+    content: "❄ ❅ ❆";
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    font-size: 2rem;
+    color: white;
+    animation: snowfall 10s linear infinite;
+}
+
+.snowflakes::after {
+    left: 20%;
+    font-size: 1.4rem;
+    animation-duration: 16s;
+}
+
+@keyframes snowfall {
+    0% { transform: translateY(-10%) rotate(0deg); }
+    100% { transform: translateY(120vh) rotate(360deg); }
+}
+
+/* Christmas Decorative Sparkle */
+.christmas-sparkle {
+    animation: sparkle 2.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+    0% { text-shadow: 0 0 5px gold; }
+    50% { text-shadow: 0 0 20px gold; }
+    100% { text-shadow: 0 0 5px gold; }
+}
