@@ -1,152 +1,152 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* -------------------------------------------------------
+   UNIVERSAL SCRIPT FOR BOTH WEBSITES (ART + BODY & GLOW)
+   100% crash-proof, supports nested categories and folders
+---------------------------------------------------------*/
 
-  /* -----------------------------
-     CHRISTMAS BACKGROUND
-  ----------------------------- */
-  document.body.style.background = `
-    linear-gradient(
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.35)
-    ),
-    url("./christmaselements.png")
-  `;
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+function safe(text) {
+  return String(text || "").replace(/[&<>"]/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;"
+  }[c]));
+}
 
-  /* -----------------------------
-     SOFT FALLING SNOWFLAKES
-  ----------------------------- */
-  function createSnow() {
-    const snow = document.createElement("div");
-    snow.classList.add("snowflake");
+function getQuery(name) {
+  return new URLSearchParams(location.search).get(name);
+}
 
-    snow.style.left = Math.random() * 100 + "vw";
-    snow.style.animationDuration = 4 + Math.random() * 7 + "s"; 
-    snow.style.opacity = Math.random() * 0.7 + 0.3;
+/* -------------------------------------------------------
+   LOAD CATALOGUE.JSON
+---------------------------------------------------------*/
+function loadCatalogue() {
+  const grid = document.getElementById("catalogue-root");
+  if (!grid) return;
 
-    document.body.appendChild(snow);
+  fetch("catalogue.json")
+    .then(r => r.json())
+    .then(data => {
+      let html = "";
 
-    setTimeout(() => snow.remove(), 12000);
-  }
+      data.categories.forEach(cat => {
+        html += `<section class="cat-block">
+            <h2>${safe(cat.name)}</h2>`;
 
-  setInterval(createSnow, 250);
-
-  /* -----------------------------
-     LOAD CATALOGUE DYNAMICALLY
-  ----------------------------- */
-  const catalogueContainer = document.getElementById("catalogue-container");
-  const productContainer = document.getElementById("product-container");
-
-  if (catalogueContainer) {
-    fetch("./catalogue.json")
-      .then(res => res.json())
-      .then(data => renderCatalogue(data))
-      .catch(err => {
-        console.error("Catalogue loading error:", err);
-        catalogueContainer.innerHTML =
-          "<p style='color:white;text-align:center;'>Failed to load catalogue.</p>";
-      });
-  }
-
-  if (productContainer) {
-    const url = new URL(window.location.href);
-    const productId = url.searchParams.get("id");
-
-    fetch("./catalogue.json")
-      .then(res => res.json())
-      .then(data => renderProduct(data, productId))
-      .catch(err => {
-        console.error("Product loading error:", err);
-        productContainer.innerHTML =
-          "<p style='color:white;text-align:center;'>Failed to load product.</p>";
-      });
-  }
-
-});
-
-/* -----------------------------
-   RENDER CATALOGUE
------------------------------ */
-function renderCatalogue(data) {
-  const container = document.getElementById("catalogue-container");
-  container.innerHTML = "";
-
-  data.categories.forEach(category => {
-    const categoryDiv = document.createElement("div");
-    categoryDiv.classList.add("category");
-
-    categoryDiv.innerHTML = `
-      <h2>${category.name}</h2>
-    `;
-
-    if (category.subcategories && category.subcategories.length > 0) {
-      category.subcategories.forEach(sub => {
-        const subDiv = document.createElement("div");
-        subDiv.classList.add("subcategory");
-
-        subDiv.innerHTML = `<h3>${sub.name}</h3>`;
-
-        if (sub.products && sub.products.length > 0) {
-          sub.products.forEach(prod => {
-            let imgSrc = prod.images && prod.images.length > 0 ? prod.images[0] : "christmaselements.png";
-
-            const prodDiv = document.createElement("div");
-            prodDiv.classList.add("product-card");
-
-            prodDiv.innerHTML = `
-              <img src="./${imgSrc}" alt="${prod.name}">
-              <h4>${prod.name}</h4>
-              <p>${prod.price} USD</p>
-              <a href="product.html?id=${prod.id}">See details</a>
-            `;
-
-            subDiv.appendChild(prodDiv);
+        // SUBCATEGORIES
+        if (cat.subcategories) {
+          cat.subcategories.forEach(sub => {
+            html += `<h3>${safe(sub.name)}</h3><div class="product-grid">`;
+            (sub.products || []).forEach(p => {
+              html += productCard(p);
+            });
+            html += `</div>`;
           });
-        } else {
-          subDiv.innerHTML += `<p>No products.</p>`;
         }
 
-        categoryDiv.appendChild(subDiv);
+        // PRODUCTS (no subcategories)
+        if (cat.products) {
+          html += `<div class="product-grid">`;
+          cat.products.forEach(p => {
+            html += productCard(p);
+          });
+          html += `</div>`;
+        }
+
+        html += `</section>`;
       });
 
-    } else {
-      categoryDiv.innerHTML += `<p>No subcategories.</p>`;
-    }
-
-    container.appendChild(categoryDiv);
-  });
-}
-
-/* -----------------------------
-   RENDER PRODUCT PAGE
------------------------------ */
-function renderProduct(data, productId) {
-  let product = null;
-
-  data.categories.forEach(category => {
-    category.subcategories.forEach(sub => {
-      const found = sub.products.find(p => p.id === productId);
-      if (found) product = found;
+      grid.innerHTML = html;
+    })
+    .catch(err => {
+      console.error("Catalogue error:", err);
+      grid.innerHTML = `<p class="error">Failed to load catalogue.</p>`;
     });
-  });
-
-  const container = document.getElementById("product-container");
-
-  if (!product) {
-    container.innerHTML = "<p style='color:white;'>Product not found.</p>";
-    return;
-  }
-
-  let imagesHTML = "";
-  product.images.forEach(img => {
-    imagesHTML += `<img src="./${img}" class="product-image">`;
-  });
-
-  container.innerHTML = `
-    <h2>${product.name}</h2>
-    <div class="product-gallery">${imagesHTML}</div>
-    <p>${product.description}</p>
-    <p class="price">${product.price} USD</p>
-    <a href="${product.paymentLink}" class="buy-button">Buy Now</a>
-  `;
 }
+
+/* -------------------------------------------------------
+   PRODUCT CARD FOR CATALOGUE
+---------------------------------------------------------*/
+function productCard(p) {
+  const img = p.images?.[0] || "";
+  return `
+    <div class="product-card" onclick="location.href='product.html?id=${safe(p.id)}'">
+      <img src="${img}" onerror="this.style.display='none'">
+      <h4>${safe(p.name)}</h4>
+      <p class="price">${p.price ? p.price + " USD" : ""}</p>
+    </div>`;
+}
+
+/* -------------------------------------------------------
+   FIND PRODUCT BY ID (supports nested subcategories)
+---------------------------------------------------------*/
+function findProduct(data, id) {
+  for (const cat of data.categories) {
+    // products directly inside category
+    if (cat.products) {
+      for (const p of cat.products) {
+        if (p.id === id) return p;
+      }
+    }
+    // products inside subcategories
+    if (cat.subcategories) {
+      for (const sub of cat.subcategories) {
+        for (const p of (sub.products || [])) {
+          if (p.id === id) return p;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+/* -------------------------------------------------------
+   LOAD PRODUCT.HTML
+---------------------------------------------------------*/
+function loadProductPage() {
+  const root = document.getElementById("product-root");
+  if (!root) return;
+
+  fetch("catalogue.json")
+    .then(r => r.json())
+    .then(data => {
+      const id = getQuery("id");
+      const p = findProduct(data, id);
+
+      if (!p) {
+        root.innerHTML = `<p class="error">Product not found.</p>`;
+        return;
+      }
+
+      let html = `<div class="product-detail">
+        <h2>${safe(p.name)}</h2>
+        <div class="gallery">`;
+
+      (p.images || []).forEach(img => {
+        html += `<img src="${img}" onerror="this.style.display='none'">`;
+      });
+
+      html += `</div>
+        <div class="prod-meta">
+          <p class="price">${p.price ? p.price + " USD" : ""}</p>
+          <p>${safe(p.description || "")}</p>`;
+
+      if (p.paymentLink) {
+        html += `<p><a class="btn buy" 
+                 href="${p.paymentLink}" 
+                 target="_blank" rel="noopener">
+                 Buy with PayPal</a></p>`;
+      }
+
+      html += `</div></div>`;
+      root.innerHTML = html;
+    })
+    .catch(err => {
+      console.error("Product load error:", err);
+      root.innerHTML = `<p class="error">Failed to load product.</p>`;
+    });
+}
+
+/* -------------------------------------------------------
+   RUN ON PAGE LOAD
+---------------------------------------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+  loadCatalogue();
+  loadProductPage();
+});
