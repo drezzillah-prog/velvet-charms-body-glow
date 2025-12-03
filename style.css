@@ -1,218 +1,126 @@
-/* ------------------------------
-   GLOBAL CHRISTMAS THEME
---------------------------------*/
-
-body.christmas-bg {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, #b30000 0%, #8c0000 100%);
-    color: #fff;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+:root{
+  --bg:#8B0000; /* deep red */
+  --accent-gold:#C9A74B; /* warm gold */
+  --accent-green:#0B6623;
+  --text:#fff;
+  --muted: #f6e9d6;
+  --card:#fff;
+  --card-text:#222;
 }
 
-/* GOLD TEXT GLOW */
-h1, h2, h3, h4, h5, h6 {
-    color: #ffd700;
-    text-shadow: 0 0 10px #ffdd55, 0 0 20px #ffcc00;
+*{box-sizing:border-box}
+body.site-root{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, rgba(139,0,0,0.95), rgba(80,0,0,0.95));
+  color:var(--text);
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
 }
 
-/* Header */
-.header {
-    background: rgba(0,0,0,0.45);
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid gold;
+/* christmas overlay elements (soft snow + sprite) */
+.hero-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.25;
+  pointer-events:none;
+  z-index:0;
+  mix-blend-mode:screen;
 }
 
-.header nav a {
-    margin: 0 15px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #ffe66d;
-    transition: 0.3s;
+/* falling snow */
+@keyframes snow {
+  0%{transform:translateY(-10vh) rotate(0); opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(120vh) rotate(360deg); opacity:0.8}
+}
+.snowflake{
+  position:fixed;
+  z-index:1;
+  pointer-events:none;
+  opacity:0.9;
+  mix-blend-mode:screen;
 }
 
-.header nav a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 10px #ffe066;
+/* create some snow elements */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06) 0 1px, transparent 1px),
+                    radial-gradient(circle at 50% 40%, rgba(255,255,255,0.05) 0 1px, transparent 1px);
+  background-size: 40px 40px, 90px 90px;
+  z-index:0;
+  pointer-events:none;
 }
 
-/* Home Hero Section */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
+/* top bar */
+.topbar{
+  position:relative;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 20px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05));
+  border-bottom:4px solid var(--accent-gold);
 }
+.brand{ font-weight:700; font-size:18px; color:var(--muted); }
+.nav a{ color:var(--muted); margin-left:14px; text-decoration:none; }
+.nav a.active{ font-weight:700; color:var(--accent-gold) }
 
-.hero h1 {
-    font-size: 3rem;
+/* hero */
+.hero{
+  min-height:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  position:relative;
+  z-index:2;
 }
+.hero-content{ text-align:center; color:var(--muted); max-width:900px; margin:auto; }
+.hero h1{ font-size:36px; margin:0 0 8px; color:var(--accent-gold);}
+.btn{ display:inline-block; background:var(--accent-green); color:white; padding:10px 16px; border-radius:10px; text-decoration:none; margin-top:12px; box-shadow:0 6px 18px rgba(0,0,0,0.4);}
+.sister{ color:var(--accent-gold); }
 
-.cta-btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background: gold;
-    color: #8c0000;
-    border-radius: 12px;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 0 10px gold, 0 0 20px gold;
-    transition: 0.3s;
-}
+/* container */
+.container{ padding:24px; z-index:3; position:relative; }
+.catalogue-grid{ display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
 
-.cta-btn:hover {
-    background: #ffe066;
-    box-shadow: 0 0 20px #ffc600;
-}
+/* category card */
+.cat-card{ background: rgba(255,255,255,0.06); padding:14px; border-radius:12px; border:2px solid rgba(201,167,75,0.12); }
+.cat-card h3{ margin:0 0 8px; color:var(--accent-gold); }
 
-/* Catalogue Page */
-.catalogue-grid {
-    padding: 50px 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-}
+/* products grid inside card */
+.products-grid{ display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+.product-card{ background:var(--card); color:var(--card-text); border-radius:10px; padding:10px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.25); }
+.product-card .thumb{ height:150px; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:8px; background:linear-gradient(180deg,#fff,#f3f1ea);}
+.product-card img{ max-width:100%; max-height:100%; display:block; }
+.product-card h5{ margin:0; font-size:16px; }
+.price{ margin-top:8px; font-weight:700; color:var(--accent-green); }
+.btn.small{ margin-top:10px; background:var(--accent-gold); color:#111; padding:8px 12px; border-radius:8px; text-decoration:none; display:inline-block; }
 
-.category-card {
-    background: rgba(0,0,0,0.35);
-    border: 2px solid #ffd700;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    color: white;
-    transition: 0.3s;
-}
+/* product page */
+.product-page .product-detail{ display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
+.product-page .gallery img{ width:100%; margin-bottom:8px; border-radius:6px; }
+.prod-meta{ background:rgba(255,255,255,0.04); padding:12px; border-radius:8px; color:var(--muted); }
+.prod-meta .price{ font-size:20px; color:var(--accent-gold); margin-bottom:12px; }
+.btn.buy{ display:inline-block; padding:10px 14px; background:var(--accent-gold); color:#111; text-decoration:none; border-radius:8px; }
 
-.category-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px gold;
-    background: rgba(0,0,0,0.55);
-}
+/* form */
+form label{ display:block; margin-bottom:12px; color:var(--muted); }
+input, textarea{ width:100%; padding:8px; border-radius:6px; border:1px solid rgba(0,0,0,0.1); }
 
-/* Product List */
-.product-grid {
-    padding: 50px 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-}
+/* footer */
+.footer{ padding:16px; text-align:center; color:var(--muted); z-index:3; position:relative; }
 
-.product-card {
-    background: rgba(0,0,0,0.35);
-    border: 2px solid #ffe66d;
-    border-radius: 20px;
-    padding: 15px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.product-card:hover {
-    transform: scale(1.04);
-    background: rgba(0,0,0,0.55);
-    box-shadow: 0 0 20px #ffd700;
-}
-
-.product-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    border-radius: 12px;
-}
-
-/* Product Page */
-.product-page {
-    padding: 40px;
-}
-
-#product-container img {
-    max-width: 400px;
-    width: 100%;
-    display: block;
-    margin: 0 auto 20px;
-    border-radius: 12px;
-    border: 3px solid gold;
-}
-
-.price {
-    font-size: 1.7rem;
-    color: #ffeb8a;
-}
-
-.pay-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 14px 26px;
-    background: gold;
-    color: #8c0000;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.3rem;
-    box-shadow: 0 0 15px gold;
-    transition: 0.3s;
-}
-
-.pay-btn:hover {
-    background: #ffe066;
-    box-shadow: 0 0 25px #ffd700;
-}
-
-/* Footer */
-footer {
-    margin-top: 50px;
-    text-align: center;
-    padding: 20px;
-    background: rgba(0,0,0,0.45);
-    border-top: 2px solid gold;
-}
-
-/* --------------------------------
-   SNOWFLAKE ANIMATION
----------------------------------*/
-
-.snowflakes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 999;
-}
-
-.snowflakes::before,
-.snowflakes::after {
-    content: "❄ ❅ ❆";
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    font-size: 2rem;
-    color: white;
-    animation: snowfall 10s linear infinite;
-}
-
-.snowflakes::after {
-    left: 20%;
-    font-size: 1.4rem;
-    animation-duration: 16s;
-}
-
-@keyframes snowfall {
-    0% { transform: translateY(-10%) rotate(0deg); }
-    100% { transform: translateY(120vh) rotate(360deg); }
-}
-
-/* Christmas Decorative Sparkle */
-.christmas-sparkle {
-    animation: sparkle 2.5s infinite ease-in-out;
-}
-
-@keyframes sparkle {
-    0% { text-shadow: 0 0 5px gold; }
-    50% { text-shadow: 0 0 20px gold; }
-    100% { text-shadow: 0 0 5px gold; }
+/* responsive */
+@media (max-width:880px){
+  .product-page .product-detail{ grid-template-columns:1fr; }
+  .hero h1{ font-size:28px; }
 }
