@@ -1,106 +1,231 @@
-// Body Glow site script
-const ADMIN_EMAIL = ''; // set to your email if you want mailto behavior
+// script.js - Velvet Charms Body & Glow
+// Expects catalogue.json in the same folder.
+// Renders catalogue.html and product.html.
 
-async function loadProducts(){
-  try{
-    const res = await fetch('products.json');
-    const data = await res.json();
-    const grid = document.getElementById('products-grid');
-    const included = ['Candles','Body Care','Soaps','Perfumes','Knitted & Braided Wool Creations','Hair Accessories','Phone Cases','Bundles'];
-    const items = [];
-    data.categories.forEach(cat=>{
-      if(included.includes(cat.name)){
-        (cat.subcategories || []).forEach(sub=>{
-          (sub.products || []).forEach(p=>items.push({...p,category:cat.name,subcategory:sub.name}));
+function fetchJSON(path) {
+    return fetch(path).then(r => {
+        if (!r.ok) throw new Error("Failed to load " + path);
+        return r.json();
+    });
+}
+
+// ---------------------- Catalogue rendering ----------------------
+function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+
+function createEl(tag, cls, html) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+}
+
+function showMessage(container, text) {
+    const p = createEl('p', null, text);
+    container.appendChild(p);
+}
+
+function renderProductCard(p) {
+    const card = createEl('div', 'product-card');
+    const img = createEl('img');
+    img.src = p.images && p.images.length ? p.images[0] : 'placeholder.png';
+    img.alt = p.name;
+    card.appendChild(img);
+
+    const title = createEl('h4', null, p.name);
+    card.appendChild(title);
+
+    const price = createEl('div', 'price', `${p.price} USD`);
+    card.appendChild(price);
+
+    const a = createEl('a', null, 'See details');
+    a.href = `product.html?id=${encodeURIComponent(p.id)}`;
+    card.appendChild(a);
+
+    return card;
+}
+
+function renderCatalogue(data, containerId = 'catalogue-container') {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    clear(container);
+
+    if (!data || !Array.isArray(data.categories) || data.categories.length === 0) {
+        showMessage(container, "No categories found.");
+        return;
+    }
+
+    data.categories.forEach(cat => {
+        // Category header
+        const catWrap = createEl('div', 'category-block');
+        const catTitle = createEl('h2', null, cat.name);
+        catWrap.appendChild(catTitle);
+
+        if (cat.banner) {
+            const bimg = createEl('img', 'category-banner');
+            bimg.src = cat.banner;
+            bimg.alt = cat.name;
+            catWrap.appendChild(bimg);
+        }
+
+        // subcategories
+        if (Array.isArray(cat.subcategories) && cat.subcategories.length) {
+            cat.subcategories.forEach(sub => {
+                const subTitle = createEl('h3', null, sub.name);
+                catWrap.appendChild(subTitle);
+
+                const grid = createEl('div', 'product-grid');
+                if (Array.isArray(sub.products) && sub.products.length) {
+                    sub.products.forEach(p => {
+                        grid.appendChild(renderProductCard(p));
+                    });
+                } else {
+                    showMessage(catWrap, 'No products in this subcategory.');
+                }
+
+                catWrap.appendChild(grid);
+            });
+        } else {
+            showMessage(catWrap, 'No subcategories in this category.');
+        }
+
+        container.appendChild(catWrap);
+    });
+}
+
+// ---------------------- Product page rendering ----------------------
+function renderProductPage(product) {
+    const cont = document.getElementById('product-container');
+    if (!cont) return;
+    clear(cont);
+
+    const title = createEl('h2', null, product.name);
+    cont.appendChild(title);
+
+    // Image gallery (simple)
+    if (product.images && product.images.length) {
+        const gallery = createEl('div', 'product-gallery');
+        product.images.forEach(src => {
+            const im = createEl('img');
+            im.src = src;
+            im.alt = product.name;
+            im.style.maxWidth = '260px';
+            im.style.margin = '8px';
+            gallery.appendChild(im);
         });
-        (cat.products || []).forEach(p=>items.push({...p,category:cat.name}));
-      }
-    });
-    grid.innerHTML = items.map(p => productCard(p)).join('');
-    attachDetailListeners();
-  }catch(e){
-    console.error('loadProducts error', e);
-    document.getElementById('products-grid').innerHTML = '<p>Failed to load catalogue — ensure products.json is present.</p>';
-  }
+        cont.appendChild(gallery);
+    }
+
+    const desc = createEl('p', null, product.description || '');
+    cont.appendChild(desc);
+
+    // Options (if any)
+    if (product.options) {
+        Object.keys(product.options).forEach(optName => {
+            const opts = product.options[optName];
+            const label = createEl('label', null, `${optName}: `);
+            const sel = createEl('select', null);
+            sel.id = `opt-${optName}`;
+            opts.forEach(o => {
+                const op = document.createElement('option');
+                op.value = o;
+                op.textContent = o;
+                sel.appendChild(op);
+            });
+            cont.appendChild(label);
+            cont.appendChild(sel);
+            cont.appendChild(createEl('br'));
+        });
+    }
+
+    // Price
+    const price = createEl('div', 'price', `${product.price} USD`);
+    cont.appendChild(price);
+
+    // PayPal button (open in new tab)
+    const buy = createEl('a', 'pay-btn', 'Buy via PayPal');
+    buy.href = product.paymentLink || '#';
+    buy.target = '_blank';
+    buy.rel = 'noopener noreferrer';
+    cont.appendChild(buy);
+
+    // Extra: Show product id for debugging
+    const pid = createEl('div', 'product-id', `Product ID: ${product.id}`);
+    pid.style.opacity = 0.6;
+    pid.style.marginTop = '12px';
+    cont.appendChild(pid);
 }
 
-function productCard(p){
-  const img = (p.images && p.images.length) ? `images/${p.images[0]}` : 'images/placeholder.png';
-  const priceText = p.price ? `${p.price} USD` : '';
-  const desc = p.description ? `<p>${escapeHtml(p.description)}</p>` : '';
-  const link = p.paymentLink || '#';
-  return `
-  <div class="card" data-id="${escapeHtml(p.id || '')}">
-    <img src="${img}" alt="${escapeHtml(p.name)}">
-    <h3>${escapeHtml(p.name)}</h3>
-    ${desc}
-    <div class="price">${escapeHtml(priceText)}</div>
-    <div class="btn-row">
-      <a class="btn buy" href="${link}" target="_blank" rel="noopener noreferrer">Buy</a>
-      <button class="btn details" data-id="${escapeHtml(p.id || '')}">Details</button>
-    </div>
-  </div>`;
+// ---------------------- Loader helpers ----------------------
+function loadCatalogue(file) {
+    fetchJSON(file)
+        .then(data => renderCatalogue(data))
+        .catch(err => {
+            console.error(err);
+            const cont = document.getElementById('catalogue-container');
+            if (cont) {
+                clear(cont);
+                showMessage(cont, 'Failed to load catalogue. Check file name and JSON structure.');
+            }
+        });
 }
 
-function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function attachDetailListeners(){
-  document.querySelectorAll('.btn.details').forEach(btn=>{
-    btn.addEventListener('click', async ()=> {
-      const id = btn.getAttribute('data-id');
-      showDetailsById(id);
-    });
-  });
-}
-
-async function showDetailsById(id){
-  try{
-    const res = await fetch('products.json');
-    const data = await res.json();
+function findProductById(data, id) {
+    if (!data || !Array.isArray(data.categories)) return null;
     let found = null;
-    data.categories.forEach(cat=>{
-      (cat.subcategories||[]).forEach(sub=>(sub.products||[]).forEach(p=>{ if(p.id===id) found = p }));
-      (cat.products||[]).forEach(p=>{ if(p.id===id) found = p });
+    data.categories.forEach(cat => {
+        if (!cat.subcategories) return;
+        cat.subcategories.forEach(sub => {
+            if (!sub.products) return;
+            sub.products.forEach(p => {
+                if (p.id === id) found = p;
+            });
+        });
     });
-    if(!found) return alert('Product not found.');
-    let imgs = (found.images || []).slice(0,8).map(i=>`images/${i}`);
-    const body = `${found.name}\n\nPrice: ${found.price ? found.price + ' USD' : '—'}\n\n${found.description || ''}\n\nPayment Link: ${found.paymentLink || '—'}`;
-    // simple details popup
-    alert(body);
-  }catch(e){ console.error(e) }
+    return found;
 }
 
-// Contact form behavior
-document.getElementById('prepare-message').addEventListener('click', ()=>{
-  const f = document.getElementById('contact-form');
-  const form = new FormData(f);
-  const name = form.get('name'), email = form.get('email'), message = form.get('message');
-  const prepared = `From: ${name} <${email}>\n\n${message}`;
-  const out = document.getElementById('prepared'); out.hidden = false; out.textContent = prepared;
-  if(ADMIN_EMAIL){
-    const subject = encodeURIComponent('Velvet Charms enquiry from ' + name);
-    const body = encodeURIComponent(prepared);
-    window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
-  }
+function loadProduct(file = 'catalogue.json') {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) {
+        const cont = document.getElementById('product-container');
+        if (cont) showMessage(cont, 'No product selected.');
+        return;
+    }
+
+    fetchJSON(file)
+        .then(data => {
+            const product = findProductById(data, id);
+            if (!product) {
+                const cont = document.getElementById('product-container');
+                if (cont) {
+                    clear(cont);
+                    showMessage(cont, 'Product not found.');
+                }
+                return;
+            }
+            renderProductPage(product);
+        })
+        .catch(err => {
+            console.error(err);
+            const cont = document.getElementById('product-container');
+            if (cont) {
+                clear(cont);
+                showMessage(cont, 'Failed to load product.');
+            }
+        });
+}
+
+// ---------------------- Auto-run when catalogue page loads without inline call ----------------------
+document.addEventListener('DOMContentLoaded', function() {
+    // If catalogue container exists and script wasn't called inline, attempt to load.
+    if (document.getElementById('catalogue-container')) {
+        // Some pages call loadCatalogue('catalogue.json') inline. If not, we call default.
+        // Use catalogue.json by default.
+        if (typeof window._catalogueLoaded === 'undefined') {
+            loadCatalogue('catalogue.json');
+            window._catalogueLoaded = true;
+        }
+    }
 });
-
-// Snow animation (canvas)
-(function initSnow(){
-  const container = document.getElementById('snow');
-  const canvas = document.createElement('canvas');
-  canvas.style.width = '100%'; canvas.style.height = '100%';
-  canvas.width = innerWidth; canvas.height = innerHeight; container.appendChild(canvas);
-  const ctx = canvas.getContext('2d');
-  let flakes = [];
-  function reset(){ flakes = Array.from({length:80}, ()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*3+1,v:Math.random()*0.6+0.2})); }
-  function loop(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle='rgba(255,255,255,0.95)';
-    flakes.forEach(f=>{ ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill(); f.y += f.v; f.x += Math.sin(f.y/50); if(f.y>canvas.height){ f.y=0; f.x=Math.random()*canvas.width; }});
-    requestAnimationFrame(loop);
-  }
-  window.addEventListener('resize', ()=>{ canvas.width = innerWidth; canvas.height = innerHeight; reset(); });
-  reset(); loop();
-})();
-
-loadProducts();
