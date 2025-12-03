@@ -17,8 +17,7 @@
               "price": 90,
               "paymentLink": "https://www.paypal.com/ncp/payment/2EP29S7758654",
               "description": "Full-body sculpted spiritual candle with optional divine symbols. Choose between myrrh, sage, frankincense, sandalwood, or unscented.",
-              "images": ["CANDLES/ethereal_candle_7.jpg"],
-              "options": ["Myrrh", "Sage", "Frankincense", "Sandalwood", "Unscented"]
+              "images": ["CANDLES/ethereal_candle_7.jpg"]
             },
             {
               "id": "spirit_half_200",
@@ -26,8 +25,7 @@
               "price": 75,
               "paymentLink": "https://www.paypal.com/ncp/payment/W37Y4BFMBR4KY",
               "description": "Half-relief sculpted candle featuring deities or sacred motifs.",
-              "images": ["CANDLES/spiritual candle (2).jpg"],
-              "options": ["Myrrh", "Sage", "Frankincense", "Sandalwood", "Unscented"]
+              "images": ["CANDLES/spiritual candle (2).jpg"]
             },
             {
               "id": "spirit_full_400",
@@ -35,8 +33,7 @@
               "price": 150,
               "paymentLink": "https://www.paypal.com/ncp/payment/NG6G9WXX7PQXW",
               "description": "Large sculpted spiritual candle with detailed 3D figure.",
-              "images": ["CANDLES/ethereal_candle_6.jpg"],
-              "options": ["Myrrh", "Sage", "Frankincense", "Sandalwood", "Unscented"]
+              "images": ["CANDLES/ethereal_candle_6.jpg"]
             },
             {
               "id": "spirit_half_400",
@@ -44,8 +41,7 @@
               "price": 110,
               "paymentLink": "https://www.paypal.com/ncp/payment/XD5DD6QD8QJYQ",
               "description": "Large half-relief candle with sacred sculpted designs.",
-              "images": ["CANDLES/ethereal_candle_4.jpg"],
-              "options": ["Myrrh", "Sage", "Frankincense", "Sandalwood", "Unscented"]
+              "images": ["CANDLES/ethereal_candle_4.jpg"]
             }
           ]
         },
@@ -59,8 +55,7 @@
               "price": 50,
               "paymentLink": "https://www.paypal.com/ncp/payment/VK7WLERJM3R88",
               "description": "Altar candle painted with runes, moons, stars, or sacred icons.",
-              "images": ["CANDLES/divination candle.jpg"],
-              "options": ["Myrrh", "Sage", "Frankincense", "Sandalwood", "Unscented"]
+              "images": ["CANDLES/divination candle.jpg"]
             },
             {
               "id": "div_400",
@@ -68,24 +63,21 @@
               "price": 80,
               "paymentLink": "https://www.paypal.com/ncp/payment/6QJL8HSLFL6YJ",
               "description": "Large altar candle painted with sacred symbols.",
-              "images": ["CANDLES/divination candle.jpg"],
-              "options": ["Myrrh", "Sage", "Frankincense", "Sandalwood", "Unscented"]
+              "images": ["CANDLES/divination candle.jpg"]
             }
           ]
         },
         {
           "id": "classic",
           "name": "Classic & Decorative Candles",
-          "products": [
+          "products":[
             {
               "id": "wax_small",
               "name": "Wax Candle — Small (150ml)",
               "price": 20,
               "paymentLink": "https://www.paypal.com/ncp/payment/4XGJ5SMVP574W",
               "description": "Classic wax candle. Choose aroma and intensity.",
-              "images": ["CANDLES/wax_candle_small.png"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"],
-              "scentIntensity": ["Soft","Medium","Strong"]
+              "images": ["CANDLES/wax_candle_small.png"]
             },
             {
               "id": "wax_medium",
@@ -93,9 +85,7 @@
               "price": 25,
               "paymentLink": "https://www.paypal.com/ncp/payment/DJVW5LQCPL6A6",
               "description": "Medium-size decorative wax candle.",
-              "images": ["CANDLES/wax_candle_medium.jpg"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"],
-              "scentIntensity": ["Soft","Medium","Strong"]
+              "images": ["CANDLES/wax_candle_medium.jpg"]
             },
             {
               "id": "wax_large",
@@ -103,9 +93,7 @@
               "price": 33,
               "paymentLink": "https://www.paypal.com/ncp/payment/XFL9ZGYBJEHXW",
               "description": "Large wax candle with customizable aroma and intensity.",
-              "images": ["CANDLES/wax_candle_large.png"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"],
-              "scentIntensity": ["Soft","Medium","Strong"]
+              "images": ["CANDLES/wax_candle_large.png"]
             }
           ]
         },
@@ -119,8 +107,7 @@
               "price": 32,
               "paymentLink": "https://www.paypal.com/ncp/payment/EMNC7ACUHJKQN",
               "description": "Translucent decorative jelly candle.",
-              "images": ["CANDLES/jelly candles small.jpg"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"]
+              "images": ["CANDLES/jelly candles small.jpg"]
             },
             {
               "id": "jelly_large",
@@ -128,24 +115,21 @@
               "price": 40,
               "paymentLink": "https://www.paypal.com/ncp/payment/2MXLKBF8CPBZ2",
               "description": "Large translucent jelly candle with customizable color and scent.",
-              "images": ["CANDLES/Jelly_candle large.jpg"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"]
+              "images": ["CANDLES/Jelly_candle large.jpg"]
             }
           ]
         },
         {
           "id": "sand",
-          "name": "Sand Candles",
-          "products": [
+          "name": "Sand Candle",
+          "products":[
             {
               "id": "sand_small",
               "name": "Sand Candle — Small (150ml)",
               "price": 20,
               "paymentLink": "https://www.paypal.com/ncp/payment/AQZ2VDQVYEEGW",
               "description": "Rustic sand-texture candle, customizable scent & intensity.",
-              "images": ["CANDLES/sand_candles_small.png"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"],
-              "scentIntensity": ["Soft","Medium","Strong"]
+              "images": ["CANDLES/sand_candles_small.png"]
             },
             {
               "id": "sand_medium",
@@ -153,9 +137,7 @@
               "price": 25,
               "paymentLink": "https://www.paypal.com/ncp/payment/KYJWZJXZDYT2U",
               "description": "Medium-size rustic sand candle.",
-              "images": ["CANDLES/sand_candles_medium.png"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"],
-              "scentIntensity": ["Soft","Medium","Strong"]
+              "images": ["CANDLES/sand_candles_medium.png"]
             },
             {
               "id": "sand_large",
@@ -163,9 +145,7 @@
               "price": 33,
               "paymentLink": "https://www.paypal.com/ncp/payment/C6RL562GS3UUS",
               "description": "Large rustic sand candle.",
-              "images": ["CANDLES/sand candles large.jpg"],
-              "options": ["Orange","Lemon","Lavender","Vanilla","Jasmine","Lemongrass","Coconut","Cinnamon","Pine","Sandalwood","Coffee","Sweet Almond","Unscented"],
-              "scentIntensity": ["Soft","Medium","Strong"]
+              "images": ["CANDLES/sand candles large.jpg"]
             }
           ]
         }
@@ -173,7 +153,7 @@
     },
     {
       "id": "bodycare",
-      "name": "Body Care (Creams & Butters)",
+      "name": "Body Care",
       "subcategories": [
         {
           "id": "creams",
@@ -185,8 +165,7 @@
               "price": 28,
               "paymentLink": "https://www.paypal.com/ncp/payment/T9M3LBJ75FAVN",
               "description": "Gentle moisturizing face cream with shea butter and almond oil.",
-              "images": ["creams/Natural Face Cream.png"],
-              "options": ["Lavender","Vanilla","Citrus","Jasmine","Coconut","Rose","Sandalwood","Unscented"]
+              "images": ["creams/Natural Face Cream.png"]
             },
             {
               "id": "body_butter",
@@ -194,8 +173,7 @@
               "price": 35,
               "paymentLink": "https://www.paypal.com/ncp/payment/Y2AVDHZN9JCCQ",
               "description": "Deeply hydrating and rich body butter for all skin types.",
-              "images": ["creams/Body Butter.png"],
-              "options": ["Lavender","Vanilla","Citrus","Jasmine","Coconut","Rose","Sandalwood","Unscented"]
+              "images": ["creams/Body Butter.png"]
             },
             {
               "id": "hand_foot",
@@ -203,111 +181,106 @@
               "price": 22,
               "paymentLink": "https://www.paypal.com/ncp/payment/XVQW4M785U6A4",
               "description": "Non-greasy cream formulated for daily hydration.",
-              "images": ["creams/Hand & Foot Cream.png"],
-              "options": ["Lavender","Vanilla","Citrus","Jasmine","Coconut","Rose","Sandalwood","Unscented"]
+              "images": ["creams/Hand & Foot Cream.png"]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "soaps",
-      "name": "Soaps",
-      "products": [
-        {
-          "id": "soap_exfoliating",
-          "name": "Exfoliating Soap (100g)",
-          "price": 12,
-          "paymentLink": "https://www.paypal.com/ncp/payment/AZQZXG8AJ8VZL",
-          "description": "Exfoliating soap bar with coffee or oatmeal base.",
-          "images": [
-            "SOAPS/Exfoliating Soap 1.png",
-            "SOAPS/Exfoliating Soap 2.png",
-            "SOAPS/Exfoliating Soap 3.png",
-            "SOAPS/Exfoliating Soap 4.png",
-            "SOAPS/Exfoliating Soap 5.png",
-            "SOAPS/Exfoliating Soap 6.png"
-          ],
-          "options": ["Coffee","Oatmeal","Citrus","Lavender","Vanilla"]
         },
         {
-          "id": "soap_herbal",
-          "name": "Natural Herbal Soap (100g)",
-          "price": 12,
-          "paymentLink": "https://www.paypal.com/ncp/payment/SYA68V9BU9TRN",
-          "description": "Natural herbal soap with chamomile, calendula, or mint.",
-          "images": [
-            "SOAPS/Natural Herbal Soap.png",
-            "SOAPS/Natural Herbal Soap1.png",
-            "SOAPS/Natural Herbal Soap2.png",
-            "SOAPS/Natural Herbal Soap3.png",
-            "SOAPS/Natural Herbal Soap4.png",
-            "SOAPS/Natural Herbal Soap5.png",
-            "SOAPS/Natural Herbal Soap6.png"
-          ],
-          "options": ["Coffee","Oatmeal","Citrus","Lavender","Vanilla"]
-        },
-        {
-          "id": "soap_flower",
-          "name": "Flower-Shaped Scented Soap (100g)",
-          "price": 20,
-          "paymentLink": "https://www.paypal.com/ncp/payment/2KNEUT86VGQYS",
-          "description": "Hand-sculpted floral soap with essential oils.",
-          "images": [
-            "SOAPS/Flower soaps (1).png",
-            "SOAPS/Flower soaps (2).png",
-            "SOAPS/Flower soaps (3).png",
-            "SOAPS/Flower soaps (4).png",
-            "SOAPS/Flower soaps (5).png"
-          ],
-          "options": ["Rose","Lavender","Vanilla","Jasmine","Citrus"]
-        },
-        {
-          "id": "soap_fruit",
-          "name": "Fruit-Shaped Scented Soap (100g)",
-          "price": 20,
-          "paymentLink": "https://www.paypal.com/ncp/payment/C5ME744UZX58U",
-          "description": "Handmade fruit-shaped soap — realistic and beautifully scented.",
-          "images": [
-            "SOAPS/Fruit Soap.png",
-            "SOAPS/Fruit Soap2.png",
-            "SOAPS/Fruit Soap3.png",
-            "SOAPS/Fruit Soap4.png",
-            "SOAPS/Fruit Soap5.png"
-          ],
-          "options": ["Lemon","Orange","Apple","Peach","Vanilla"]
-        },
-        {
-          "id": "soap_gift_herbal_exfoliating",
-          "name": "Gift Herbal / Exfoliating Soap Set (3 pcs)",
-          "price": 30,
-          "paymentLink": "https://www.paypal.com/ncp/payment/ZQ6X8AZMVY4XL",
-          "description": "A special selection of three herbal or exfoliating soaps.",
-          "images": [
-            "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 1.png",
-            "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 2.png",
-            "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 3.png",
-            "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 4.png"
-          ]
-        },
-        {
-          "id": "soap_gift_flower_fruit",
-          "name": "Gift Fruit / Flower Soap Set (3 pcs)",
-          "price": 54,
-          "paymentLink": "https://www.paypal.com/ncp/payment/6QVGP97CQRGN2",
-          "description": "Three handcrafted scented soaps — mix of fruit or flower designs.",
-          "images": ["SOAPS/Gift Fruit shaped Flower shaped Soap Set (3 pcs).png"]
-        },
-        {
-          "id": "soap_gift_set_new",
-          "name": "Gift Soap Set (3 pcs)",
-          "price": 30,
-          "paymentLink": "https://www.paypal.com/ncp/payment/ZQ6X8AZMVY4XL",
-          "description": "A curated trio of handmade soaps.",
-          "images": [
-            "SOAPS/Gift Soap Set (3 pcs)1.png",
-            "SOAPS/Gift Soap Set (3 pcs)2.png",
-            "SOAPS/Gift Soap Set (3 pcs)3.png"
+          "id": "soaps",
+          "name": "Soaps",
+          "products": [
+            {
+              "id": "soap_exfoliating",
+              "name": "Exfoliating Soap (100g)",
+              "price": 12,
+              "paymentLink": "https://www.paypal.com/ncp/payment/AZQZXG8AJ8VZL",
+              "description": "Exfoliating soap bar with coffee or oatmeal base.",
+              "images": [
+                "SOAPS/Exfoliating Soap 1.png",
+                "SOAPS/Exfoliating Soap 2.png",
+                "SOAPS/Exfoliating Soap 3.png",
+                "SOAPS/Exfoliating Soap 4.png",
+                "SOAPS/Exfoliating Soap 5.png",
+                "SOAPS/Exfoliating Soap 6.png"
+              ]
+            },
+            {
+              "id": "soap_herbal",
+              "name": "Natural Herbal Soap (100g)",
+              "price": 12,
+              "paymentLink": "https://www.paypal.com/ncp/payment/SYA68V9BU9TRN",
+              "description": "Natural herbal soap with chamomile, calendula, or mint.",
+              "images": [
+                "SOAPS/Natural Herbal Soap.png",
+                "SOAPS/Natural Herbal Soap1.png",
+                "SOAPS/Natural Herbal Soap2.png",
+                "SOAPS/Natural Herbal Soap3.png",
+                "SOAPS/Natural Herbal Soap4.png",
+                "SOAPS/Natural Herbal Soap5.png",
+                "SOAPS/Natural Herbal Soap6.png"
+              ]
+            },
+            {
+              "id": "soap_flower",
+              "name": "Flower-Shaped Scented Soap (100g)",
+              "price": 20,
+              "paymentLink": "https://www.paypal.com/ncp/payment/2KNEUT86VGQYS",
+              "description": "Hand-sculpted floral soap with essential oils.",
+              "images": [
+                "SOAPS/Flower soaps (1).png",
+                "SOAPS/Flower soaps (2).png",
+                "SOAPS/Flower soaps (3).png",
+                "SOAPS/Flower soaps (4).png",
+                "SOAPS/Flower soaps (5).png"
+              ]
+            },
+            {
+              "id": "soap_fruit",
+              "name": "Fruit-Shaped Scented Soap (100g)",
+              "price": 20,
+              "paymentLink": "https://www.paypal.com/ncp/payment/C5ME744UZX58U",
+              "description": "Handmade fruit-shaped soap — realistic and beautifully scented.",
+              "images": [
+                "SOAPS/Fruit Soap.png",
+                "SOAPS/Fruit Soap2.png",
+                "SOAPS/Fruit Soap3.png",
+                "SOAPS/Fruit Soap4.png",
+                "SOAPS/Fruit Soap5.png"
+              ]
+            },
+            {
+              "id": "soap_gift_herbal_exfoliating",
+              "name": "Gift Herbal / Exfoliating Soap Set (3 pcs)",
+              "price": 30,
+              "paymentLink": "https://www.paypal.com/ncp/payment/ZQ6X8AZMVY4XL",
+              "description": "A special selection of three herbal or exfoliating soaps.",
+              "images": [
+                "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 1.png",
+                "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 2.png",
+                "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 3.png",
+                "SOAPS/Gift Herbal Exfoliating Soap Set (3 pcs) 4.png"
+              ]
+            },
+            {
+              "id": "soap_gift_flower_fruit",
+              "name": "Gift Fruit / Flower Soap Set (3 pcs)",
+              "price": 54,
+              "paymentLink": "https://www.paypal.com/ncp/payment/6QVGP97CQRGN2",
+              "description": "Three handcrafted scented soaps — mix of fruit or flower designs.",
+              "images": ["SOAPS/Gift Fruit shaped Flower shaped Soap Set (3 pcs).png"]
+            },
+            {
+              "id": "soap_gift_set_new",
+              "name": "Gift Soap Set (3 pcs)",
+              "price": 30,
+              "paymentLink": "https://www.paypal.com/ncp/payment/ZQ6X8AZMVY4XL",
+              "description": "A curated trio of handmade soaps.",
+              "images": [
+                "SOAPS/Gift Soap Set (3 pcs)1.png",
+                "SOAPS/Gift Soap Set (3 pcs)2.png",
+                "SOAPS/Gift Soap Set (3 pcs)3.png"
+              ]
+            }
           ]
         }
       ]
@@ -322,8 +295,7 @@
           "price": 28,
           "paymentLink": "https://www.paypal.com/ncp/payment/BXDY354K5949A",
           "description": "Alcohol-free solid perfume with long-lasting natural aromas.",
-          "images": ["perfume/Solid Perfume.png"],
-          "options": ["Vanilla Orchid","Amber Wood","Sandalwood Rose","White Musk"]
+          "images": ["perfume/Solid Perfume.png"]
         },
         {
           "id": "perfume_rollon",
@@ -331,8 +303,7 @@
           "price": 22,
           "paymentLink": "https://www.paypal.com/ncp/payment/9SGLCBQ76USZL",
           "description": "Essential oil roll-on perfume made in small batches.",
-          "images": ["perfume/Oil Perfume Roll-On.jpg"],
-          "options": ["Citrus Bloom","Lavender Mist","Cedar & Amber","Floral Spice"]
+          "images": ["perfume/Oil Perfume Roll-On.jpg"]
         }
       ]
     },
@@ -344,214 +315,79 @@
           "id": "beanies",
           "name": "Hand-Knitted Beanies",
           "products": [
-            {
-              "id": "beanie_small",
-              "name": "Hand-Knitted Beanie — Small",
-              "price": 35,
-              "paymentLink": "https://www.paypal.com/ncp/payment/S4KAZSV8WN5MG",
-              "description": "Hand-knitted warm beanie. Color-customizable.",
-              "images": ["Knitted and braided products/Hand-Knitted Beanie - Small.png"]
-            },
-            {
-              "id": "beanie_medium",
-              "name": "Hand-Knitted Beanie — Medium",
-              "price": 38,
-              "paymentLink": "https://www.paypal.com/ncp/payment/Q944A2C9DTQJW",
-              "description": "Most popular size. Soft merino or acrylic yarn.",
-              "images": ["Knitted and braided products/Hand-Knitted Beanie - Medium.png"]
-            },
-            {
-              "id": "beanie_large",
-              "name": "Hand-Knitted Beanie — Large",
-              "price": 42,
-              "paymentLink": "https://www.paypal.com/ncp/payment/TT26KNF22D7QC",
-              "description": "Large size for extra warmth.",
-              "images": ["Knitted and braided products/Hand-Knitted Beanie - Large.png"]
-            },
-            {
-              "id": "beanie_xl",
-              "name": "Hand-Knitted Beanie — Extra Large",
-              "price": 45,
-              "paymentLink": "https://www.paypal.com/ncp/payment/6RS4V7Y9E8AQN",
-              "description": "Oversized cozy design.",
-              "images": ["Knitted and braided products/Hand-Knitted Beanie - Extra-Large.png"]
-            }
+            {"id":"beanie_small","name":"Hand-Knitted Beanie — Small","price":35,"paymentLink":"https://www.paypal.com/ncp/payment/S4KAZSV8WN5MG","description":"Hand-knitted warm beanie. Color-customizable.","images":["Knitted and braided products/Hand-Knitted Beanie - Small.png"]},
+            {"id":"beanie_medium","name":"Hand-Knitted Beanie — Medium","price":38,"paymentLink":"https://www.paypal.com/ncp/payment/Q944A2C9DTQJW","description":"Most popular size. Soft merino or acrylic yarn.","images":["Knitted and braided products/Hand-Knitted Beanie - Medium.png"]},
+            {"id":"beanie_large","name":"Hand-Knitted Beanie — Large","price":42,"paymentLink":"https://www.paypal.com/ncp/payment/TT26KNF22D7QC","description":"Large size for extra warmth.","images":["Knitted and braided products/Hand-Knitted Beanie - Large.png"]},
+            {"id":"beanie_xl","name":"Hand-Knitted Beanie — Extra Large","price":45,"paymentLink":"https://www.paypal.com/ncp/payment/6RS4V7Y9E8AQN","description":"Oversized cozy design.","images":["Knitted and braided products/Hand-Knitted Beanie - Extra-Large.png"]}
           ]
         },
         {
           "id": "scarves",
-          "name": "Scarves",
+          "name": "Hand-Knitted Scarves",
           "products": [
-            {
-              "id": "scarf_standard",
-              "name": "Hand-Knitted Scarf — One Size",
-              "price": 55,
-              "paymentLink": "https://www.paypal.com/ncp/payment/BLYUGH43XL4RS",
-              "description": "Cozy knitted scarf (approx. 150×25 cm).",
-              "images": ["Knitted and braided products/Hand-Knitted Scarf - One size (150x25 cm avg.).png"]
-            }
+            {"id":"scarf_standard","name":"Hand-Knitted Scarf — One Size","price":55,"paymentLink":"https://www.paypal.com/ncp/payment/BLYUGH43XL4RS","description":"Cozy knitted scarf (approx. 150×25 cm).","images":["Knitted and braided products/Hand-Knitted Scarf - One size (150x25 cm avg.).png"]}
           ]
         },
         {
           "id": "mittens",
           "name": "Hand-Knitted Mittens",
           "products": [
-            {
-              "id": "mittens_small",
-              "name": "Hand-Knitted Mittens — Small",
-              "price": 28,
-              "paymentLink": "https://www.paypal.com/ncp/payment/QESLM9KV4EQ38",
-              "description": "Classic warm mittens.",
-              "images": ["Knitted and braided products/Hand-Knitted Mittens - Small.png"]
-            },
-            {
-              "id": "mittens_medium",
-              "name": "Hand-Knitted Mittens — Medium",
-              "price": 32,
-              "paymentLink": "https://www.paypal.com/ncp/payment/GUGQG23BGUKWJ",
-              "description": "Medium-sized handcrafted mittens.",
-              "images": ["Knitted and braided products/Hand-Knitted Mittens - Medium.png"]
-            },
-            {
-              "id": "mittens_large",
-              "name": "Hand-Knitted Mittens — Large",
-              "price": 35,
-              "paymentLink": "https://www.paypal.com/ncp/payment/LHSJU6JBQXM64",
-              "description": "Soft and warm.",
-              "images": ["Knitted and braided products/Hand-Knitted Mittens - Large.png"]
-            },
-            {
-              "id": "mittens_xl",
-              "name": "Hand-Knitted Mittens — Extra Large",
-              "price": 40,
-              "paymentLink": "https://www.paypal.com/ncp/payment/ZJAE5KGTTDEP4",
-              "description": "Extra-large cozy mittens.",
-              "images": ["Knitted and braided products/Hand-Knitted Mittens - Extra Large.png"]
-            }
+            {"id":"mittens_small","name":"Hand-Knitted Mittens — Small","price":28,"paymentLink":"https://www.paypal.com/ncp/payment/QESLM9KV4EQ38","description":"Classic warm mittens.","images":["Knitted and braided products/Hand-Knitted Mittens - Small.png"]},
+            {"id":"mittens_medium","name":"Hand-Knitted Mittens — Medium","price":32,"paymentLink":"https://www.paypal.com/ncp/payment/GUGQG23BGUKWJ","description":"Medium-sized handcrafted mittens.","images":["Knitted and braided products/Hand-Knitted Mittens - Medium.png"]},
+            {"id":"mittens_large","name":"Hand-Knitted Mittens — Large","price":35,"paymentLink":"https://www.paypal.com/ncp/payment/LHSJU6JBQXM64","description":"Soft and warm.","images":["Knitted and braided products/Hand-Knitted Mittens - Large.png"]},
+            {"id":"mittens_xl","name":"Hand-Knitted Mittens — Extra Large","price":40,"paymentLink":"https://www.paypal.com/ncp/payment/ZJAE5KGTTDEP4","description":"Extra-large cozy mittens.","images":["Knitted and braided products/Hand-Knitted Mittens - Extra Large.png"]}
           ]
         },
         {
           "id": "knitted_set",
           "name": "Matching Winter Set",
           "products": [
-            {
-              "id": "winter_set",
-              "name": "Matching Winter Set — Beanie + Scarf + Mittens",
-              "price": 110,
-              "paymentLink": "https://www.paypal.com/ncp/payment/VWTNNVT586JBN",
-              "description": "Warm handcrafted winter set — 15% bundle discount.",
-              "images": ["Knitted and braided products/Matching Winter Set - Beanie + Scarf + Mittens.png"]
-            }
+            {"id":"winter_set","name":"Matching Winter Set — Beanie + Scarf + Mittens","price":110,"paymentLink":"https://www.paypal.com/ncp/payment/VWTNNVT586JBN","description":"Warm handcrafted winter set — 15% bundle discount.","images":["Knitted and braided products/Matching Winter Set - Beanie + Scarf + Mittens.png"]}
           ]
         },
         {
           "id": "braided_blankets",
           "name": "Braided Blankets",
-          "products": [
-            {
-              "id": "blanket_small",
-              "name": "Braided Blanket — Small (80×100 cm)",
-              "price": 85,
-              "paymentLink": "https://www.paypal.com/ncp/payment/3TB59Q7RG2SLE",
-              "description": "Small braided throw — perfect for babies or couch armrests.",
-              "images": ["Knitted and braided products/Braided Blanket (Small).png"]
-            },
-            {
-              "id": "blanket_medium",
-              "name": "Braided Blanket — Medium (120×150 cm)",
-              "price": 130,
-              "paymentLink": "https://www.paypal.com/ncp/payment/B82QPFVQVDUQL",
-              "description": "Medium-size braided blanket.",
-              "images": ["Knitted and braided products/Braided Blanket (Medium).png"]
-            },
-            {
-              "id": "blanket_large",
-              "name": "Braided Blanket — Large (150×200 cm)",
-              "price": 180,
-              "paymentLink": "https://www.paypal.com/ncp/payment/DXBW4QFN7T96J",
-              "description": "Large cozy chunky-knit blanket.",
-              "images": ["Knitted and braided products/Braided Blanket (Large).png"]
-            }
+          "products":[
+            {"id":"blanket_small","name":"Braided Blanket — Small (80×100 cm)","price":85,"paymentLink":"https://www.paypal.com/ncp/payment/3TB59Q7RG2SLE","description":"Small braided throw — perfect for babies or couch armrests.","images":["Knitted and braided products/Braided Blanket (Small).png"]},
+            {"id":"blanket_medium","name":"Braided Blanket — Medium (120×150 cm)","price":130,"paymentLink":"https://www.paypal.com/ncp/payment/B82QPFVQVDUQL","description":"Medium-size braided blanket.","images":["Knitted and braided products/Braided Blanket (Medium).png"]},
+            {"id":"blanket_large","name":"Braided Blanket — Large (150×200 cm)","price":180,"paymentLink":"https://www.paypal.com/ncp/payment/DXBW4QFN7T96J","description":"Large cozy chunky-knit blanket.","images":["Knitted and braided products/Braided Blanket (Large).png"]}
           ]
         },
         {
-          "id": "felted_animals",
-          "name": "Felted Animals",
-          "products": [
-            {
-              "id": "felt_small",
-              "name": "Mini Felted Animal — Small (~5 cm)",
-              "price": 35,
-              "paymentLink": "https://www.paypal.com/ncp/payment/9GYLUVBC2USAU",
-              "description": "Small hand-felted wool figurine.",
-              "images": ["Knitted and braided products/Mini Felted Animal (Small).png"]
-            },
-            {
-              "id": "felt_medium",
-              "name": "Felted Animal — Medium (~10–12 cm)",
-              "price": 50,
-              "paymentLink": "https://www.paypal.com/ncp/payment/RT3Y5Z86NTA2J",
-              "description": "Medium-sized felted animal figurine.",
-              "images": ["Knitted and braided products/Felted Animal (Medium).png"]
-            },
-            {
-              "id": "felt_family",
-              "name": "Felted Animal Family Set (4 pcs)",
-              "price": 120,
-              "paymentLink": "https://www.paypal.com/ncp/payment/TW7Q43A8X5ZKG",
-              "description": "Custom animal family felted set.",
-              "images": ["Knitted and braided products/Felted Animal Family Set 4.png"]
-            }
+          "id":"felted_animals",
+          "name":"Felted Animals",
+          "products":[
+            {"id":"felt_small","name":"Mini Felted Animal — Small (~5 cm)","price":35,"paymentLink":"https://www.paypal.com/ncp/payment/9GYLUVBC2USAU","description":"Small hand-felted wool figurine.","images":["Felted Animal (Small).png","Mini Felted Animal (Small).png"]},
+            {"id":"felt_medium","name":"Felted Animal — Medium (~10–12 cm)","price":50,"paymentLink":"https://www.paypal.com/ncp/payment/RT3Y5Z86NTA2J","description":"Medium-sized felted animal figurine.","images":["Felted Animal (Medium).png"]},
+            {"id":"felt_family","name":"Felted Animal Family Set (4 pcs)","price":120,"paymentLink":"https://www.paypal.com/ncp/payment/TW7Q43A8X5ZKG","description":"Custom animal family felted set.","images":["Felted Animal Family Set 4.png"]}
           ]
         },
         {
-          "id": "pet_wear",
-          "name": "Pet Wear",
-          "products": [
-            {
-              "id": "pet_beanie",
-              "name": "Pet Beanie / Shirt / Scarf",
-              "price": 18,
-              "paymentLink": "https://www.paypal.com/ncp/payment/7CFTKTXGLVZZY",
-              "description": "Cute knitted pet wear (beanie/shirt/scarf).",
-              "images": [
-                "Knitted and braided products/Pet Beanie - shirt small.png",
-                "Knitted and braided products/Pet Beanie - shirt small2.png",
-                "Knitted and braided products/Pet Beanie - shirt small 2.png"
-              ]
-            }
+          "id":"pet_wear",
+          "name":"Pet wear",
+          "products":[
+            {"id":"pet_beanie","name":"Pet Beanie / shirt / scarf","price":18,"paymentLink":"https://www.paypal.com/ncp/payment/7CFTKTXGLVZZY","description":"Pet beanie or shirt or scarf.","images":["Knitted and braided products/Pet Beanie - shirt small.png","Knitted and braided products/Pet Beanie - shirt small2.png","Knitted and braided products/Pet Beanie - shirt small 2.png"]}
           ]
         }
       ]
     },
     {
-      "id": "bundles",
-      "name": "Bundles",
-      "products": [
-        {
-          "id": "relax_restore",
-          "name": "Relax & Restore Set",
-          "price": 65,
-          "paymentLink": "https://www.paypal.com/ncp/payment/X7EA4LJC8VQ3A",
-          "description": "Herbal soap + face cream + small wax candle.",
-          "images": ["creams/Herbal soap + face cream + small wax candle.png"]
-        },
-        {
-          "id": "cozy_winter",
-          "name": "Cozy Winter Set",
-          "price": 140,
-          "paymentLink": "https://www.paypal.com/ncp/payment/8A3AKAZR6QVEL",
-          "description": "Beanie + scarf + mittens + small candle bundle.",
-          "images": ["Knitted and braided products/CozyWinterSet.png","Knitted and braided products/Matching Winter Set - Beanie + Scarf + Mittens.png"]
-        },
-        {
-          "id": "home_harmony",
-          "name": "Home Harmony Box",
-          "price": 100,
-          "paymentLink": "https://www.paypal.com/ncp/payment/9T3C2WRAXJJYN",
-          "description": "Epoxy decor + wax candle + seasonal soap.",
-          "images": ["SOAPS/epoxy_decorative_tray_1.png","SOAPS/epoxy_decorative_tray_2.png"]
-        }
+      "id":"hair_accessories",
+      "name":"Hair Accessories",
+      "products":[
+        {"id":"hair_clip","name":"Decorative Hair Clips","price":18,"paymentLink":"https://www.paypal.com/ncp/payment/69NVMF2YG7VX4","description":"Handmade decorative hair clips crafted from resin, glass, or wool — elegant and lightweight.","images":["hair_clip_1.png","hair_clip_2.png","hair_clip_3.png","hair_clip_4.png","hair_clip_5.png"]},
+        {"id":"hair_pins","name":"Decorative Hair Pins","price":22,"paymentLink":"https://www.paypal.com/ncp/payment/X5YVRQYLU2MW6","description":"Elegant handcrafted hair pins — perfect for daily wear or special occasions.","images":["hair_pin_1.png","hair_pin_2.png","hair_pin_3.png","hair_pin_4.png"]},
+        {"id":"hair_combs","name":"Decorative Hair Combs","price":25,"paymentLink":"https://www.paypal.com/ncp/payment/LVNL7VJRTEKDQ","description":"Handmade decorative combs crafted with resin, pearlescent touches, or mixed media.","images":["hair_comb_1.png","hair_comb_2 (1).png","hair_comb_2 (2).png"]}
+      ]
+    },
+    {
+      "id":"bundles",
+      "name":"Bundles",
+      "products":[
+        {"id":"relax_restore","name":"Relax & Restore Set","price":65,"paymentLink":"https://www.paypal.com/ncp/payment/X7EA4LJC8VQ3A","description":"Herbal soap + face cream + small wax candle.","images":["Herbal soap + face cream + small wax candle.png"]},
+        {"id":"cozy_winter","name":"Cozy Winter Set","price":140,"paymentLink":"https://www.paypal.com/ncp/payment/8A3AKAZR6QVEL","description":"Beanie + scarf + mittens + small candle bundle.","images":["CozyWinterSet.png"]},
+        {"id":"home_harmony","name":"Home Harmony Box","price":100,"paymentLink":"https://www.paypal.com/ncp/payment/9T3C2WRAXJJYN","description":"Epoxy decor + wax candle + seasonal soap.","images":["epoxy_decorative_tray_1.png","epoxy_decorative_tray_2.png"]}
       ]
     }
   ]
