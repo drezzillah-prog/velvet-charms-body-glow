@@ -3,196 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Velvet Charms — Body Glow</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Velvet Charms — hand-made candles, soaps, creams & cozy bundles. Personalised commissions welcome." />
+  <title>Velvet Charms — Body & Glow</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="snow"></div>
-
   <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="top banner picture for candles.png" alt="Velvet Charms" class="brand-img" />
-        <h1>Velvet Charms — Body Glow</h1>
-      </div>
-
-      <nav class="main-nav">
-        <a href="#home" data-route="home" class="nav-link">Home</a>
-        <a href="#catalogue" data-route="catalogue" class="nav-link">Catalogue</a>
-        <a href="#about" data-route="about" class="nav-link">About</a>
-        <a href="#contact" data-route="contact" class="nav-link">Contact</a>
-        <a href="#art" data-route="art" class="nav-link">Art & Gifts</a>
-      </nav>
-    </div>
+    <div class="logo">Velvet Charms</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main id="app">
-    <section id="home" class="page page-home active">
-      <div class="hero">
-        <div class="hero-text">
-          <h2>Cozy handcrafted candles, soaps & bodycare</h2>
-          <p>Small-batch, made-with-love products — perfect for gifting or treating yourself.</p>
-          <a class="btn" href="#catalogue" data-route="catalogue">Browse catalogue</a>
-        </div>
-        <div class="hero-decor">
-          <img src="christmaselements.png" alt="festive" />
-        </div>
-      </div>
-
-      <div class="featured">
-        <h3>Featured this season</h3>
-        <div id="featured-grid" class="grid"></div>
-      </div>
+  <main>
+    <section class="hero">
+      <h1>Velvet Charms — Body & Glow</h1>
+      <p>Handmade candles, soaps, creams, hair accessories & cozy wool — made with love.</p>
     </section>
 
-    <section id="catalogue" class="page page-catalogue">
-      <aside class="sidebar">
-        <h4>Categories</h4>
-        <ul id="category-list"></ul>
-        <h4>Filters</h4>
-        <select id="subcategory-filter">
-          <option value="">All subcategories</option>
-        </select>
-
-        <div class="cart-summary">
-          <h4>Your Cart</h4>
-          <div id="cart-contents">Cart is empty</div>
-          <div class="cart-actions">
-            <button id="view-cart" class="btn small">View cart</button>
-            <button id="clear-cart" class="btn small ghost">Clear</button>
-          </div>
-        </div>
-      </aside>
-
-      <section class="catalogue-main">
-        <div class="catalogue-header">
-          <h2 id="catalogue-title">All products</h2>
-          <div class="search">
-            <input id="search" placeholder="Search products..." />
-          </div>
-        </div>
-
-        <div id="products-grid" class="grid products-grid"></div>
-      </section>
+    <section id="catalogue" class="catalogue">
+      <h2>Catalogue</h2>
+      <div id="products-grid" class="grid" aria-live="polite"></div>
     </section>
 
-    <section id="about" class="page page-about">
-      <article class="about-card">
-        <h2>About Velvet Charms — Body Glow</h2>
-        <p>
-          Velvet Charms began as a tiny studio where warmth, craft and care met. We make small-batch candles, handcrafted soaps and natural bodycare designed to
-          make everyday rituals feel special. Every item is hand-finished with attention to texture and scent, and we personalise commissions for meaningful gifts.
-        </p>
-
-        <h3>Why choose our pieces?</h3>
-        <ul>
-          <li><strong>Handmade with care:</strong> We craft each piece in small batches to preserve quality and character.</li>
-          <li><strong>Personalised options:</strong> Add a note when purchasing if you'd like a specific scent, colour or small custom detail.</li>
-          <li><strong>Ethical ingredients:</strong> Natural oils, responsibly-sourced waxes and gentle skincare formulations.</li>
-          <li><strong>Thoughtful packing:</strong> We wrap each order with a seasonal touch — perfect for gifting.</li>
-        </ul>
-
-        <h3>How to order a custom commission</h3>
-        <p>
-          On each product's page you can add a short customisation note (colours, preferred scent, or reference). After you press Buy with PayPal,
-          paste that note into PayPal's 'note to seller' area so we receive it with your order. If you'd like help before ordering, message us on Instagram or email — we'll walk you through sizes, timelines and any special requests.
-        </p>
-      </article>
+    <section id="about" class="about">
+      <h2>About Us</h2>
+      <p>We are a team of 12 passionate art students dedicated to creating personalized handcrafted items. Every piece is made with patience, care, and a touch of magic — whether you choose an existing product or request a fully custom creation built from your photos and ideas. We proudly ship worldwide, with orders dispatched from the location closest to you: Frankfurt, Germany or Constanța, Romania. Your order means the world to us — thank you for supporting handmade artistry.</p>
     </section>
 
-    <section id="contact" class="page page-contact">
-      <div class="contact-card">
-        <h2>Contact</h2>
-
-        <form id="contact-form">
-          <label>
-            Your name
-            <input type="text" id="contact-name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" id="contact-email" required />
-          </label>
-          <label>
-            Message
-            <textarea id="contact-message" rows="5" required></textarea>
-          </label>
-
-          <div class="contact-actions">
-            <button type="submit" class="btn">Send message</button>
-          </div>
-        </form>
-
-        <div class="contact-info">
-          <p><strong>Email:</strong> hello@velvetcharms.example</p>
-          <p><strong>Instagram:</strong> @velvetcharms</p>
-          <p>If you want a custom commission, include your preferred product and any reference details in the message above or on the product page when you order.</p>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Fill the form and click <strong>Prepare message</strong>. (No public social links.)</p>
+      <form id="contact-form">
+        <label>Name<br><input type="text" name="name" required></label>
+        <label>Email<br><input type="email" name="email" required></label>
+        <label>Message<br><textarea name="message" required></textarea></label>
+        <div class="form-actions">
+          <button type="button" id="prepare-message">Prepare message</button>
         </div>
-      </div>
-    </section>
-
-    <section id="art" class="page page-art">
-      <div class="art-card">
-        <h2>Velvet Charms — Art & Gifts</h2>
-        <p>This link is kept so customers can jump to the Art & Gifts site. Use the top-right navigation to switch projects.</p>
-        <a class="btn" href="https://velvet-charms-art-gifts.vercel.app" target="_blank">Open Art & Gifts</a>
-      </div>
+      </form>
+      <div id="prepared" class="prepared" aria-live="polite" hidden></div>
     </section>
   </main>
 
-  <!-- Product modal -->
-  <div id="product-modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-body">
-      <button id="modal-close" class="modal-close" title="Close">✕</button>
-      <div class="modal-content">
-        <div class="modal-gallery" id="modal-gallery"></div>
-        <div class="modal-info">
-          <h3 id="modal-title"></h3>
-          <p id="modal-desc"></p>
-          <div id="modal-price" class="price"></div>
-
-          <label>
-            Customization & notes
-            <textarea id="modal-note" rows="4" placeholder="Color, scent, personalization requests..."></textarea>
-          </label>
-
-          <div class="modal-actions">
-            <button id="add-to-cart" class="btn">Add to cart</button>
-            <button id="buy-now" class="btn gold">Buy with PayPal</button>
-          </div>
-
-          <div class="modal-extra">
-            <p class="tiny">When you click Buy with PayPal, copy your customization note into PayPal's "note to seller" so we receive it with the order.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cart overlay -->
-  <div id="cart-modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-body">
-      <button id="cart-close" class="modal-close" title="Close">✕</button>
-      <div class="cart-content">
-        <h3>Your cart</h3>
-        <div id="cart-items"></div>
-        <div id="cart-total" class="price"></div>
-        <div class="cart-cta">
-          <button id="checkout-paypal" class="btn gold">Checkout (open per-item PayPal)</button>
-        </div>
-        <p class="tiny">This static site opens each item's PayPal link in a new tab so you can complete orders separately. (If you want integrated multi-item checkout, we can add a server-side solution.)</p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div>© Velvet Charms — Body Glow</div>
-    <div class="footer-links">
-      <a href="#about" data-route="about">About</a> •
-      <a href="#contact" data-route="contact">Contact</a>
-    </div>
-  </footer>
+  <div id="snow" aria-hidden="true"></div>
+  <div class="candy" aria-hidden="true"></div>
 
   <script src="script.js"></script>
 </body>
