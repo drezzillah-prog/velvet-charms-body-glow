@@ -1,56 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Velvet Charms — Body & Glow</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Velvet Charms — Body & Glow</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="logo">Velvet Charms</div>
+
+<body class="christmas-bg">
+
+<div class="snowflakes" aria-hidden="true"></div>
+
+<header class="header">
+    <h1 class="title">Velvet Charms — Body & Glow</h1>
+
     <nav>
-      <a href="index.html">Home</a>
-      <a href="catalogue.html">Catalogue</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
-  </header>
+</header>
 
-  <main>
-    <section class="hero">
-      <h1>Velvet Charms — Body & Glow</h1>
-      <p>Handmade candles, soaps, creams, hair accessories & cozy wool — made with love.</p>
-    </section>
+<section class="hero">
+    <h2>Handmade Candles, Soaps, Creams, Perfumes & Cozy Wool Creations</h2>
+    <p>Crafted with love. Wrapped in Christmas magic.</p>
+</section>
 
-    <section id="catalogue" class="catalogue">
-      <h2>Catalogue</h2>
-      <div id="products-grid" class="grid" aria-live="polite"></div>
-    </section>
+<footer>
+    © Velvet Charms — Body & Glow
+</footer>
 
-    <section id="about" class="about">
-      <h2>About Us</h2>
-      <p>We are a team of 12 passionate art students dedicated to creating personalized handcrafted items. Every piece is made with patience, care, and a touch of magic — whether you choose an existing product or request a fully custom creation built from your photos and ideas. We proudly ship worldwide, with orders dispatched from the location closest to you: Frankfurt, Germany or Constanța, Romania. Your order means the world to us — thank you for supporting handmade artistry.</p>
-    </section>
-
-    <section id="contact" class="contact">
-      <h2>Contact</h2>
-      <p>Fill the form and click <strong>Prepare message</strong>. (No public social links.)</p>
-      <form id="contact-form">
-        <label>Name<br><input type="text" name="name" required></label>
-        <label>Email<br><input type="email" name="email" required></label>
-        <label>Message<br><textarea name="message" required></textarea></label>
-        <div class="form-actions">
-          <button type="button" id="prepare-message">Prepare message</button>
-        </div>
-      </form>
-      <div id="prepared" class="prepared" aria-live="polite" hidden></div>
-    </section>
-  </main>
-
-  <div id="snow" aria-hidden="true"></div>
-  <div class="candy" aria-hidden="true"></div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
