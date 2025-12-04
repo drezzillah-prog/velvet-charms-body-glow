@@ -3,9 +3,18 @@
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "catalogue.html", "use": "@vercel/static" },
-    { "src": "product.html", "use": "@vercel/static" }
+    { "src": "product.html", "use": "@vercel/static" },
+    { "src": "about.html", "use": "@vercel/static" },
+    { "src": "contact.html", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/(.*)", "dest": "/$1" },
+    {
+      "src": "/.*",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-cache"
+      }
+    }
   ]
 }
