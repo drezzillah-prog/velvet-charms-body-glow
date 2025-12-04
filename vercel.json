@@ -1,12 +1,9 @@
 {
   "version": 2,
-  "public": true,
   "builds": [
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "*.css", "use": "@vercel/static" },
-    { "src": "*.js", "use": "@vercel/static" },
-    { "src": "*.json", "use": "@vercel/static" },
-    { "src": "*.{png,jpg,jpeg,gif,svg,webp}", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "catalogue.html", "use": "@vercel/static" },
+    { "src": "product.html", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/$1" }
