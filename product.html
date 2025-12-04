@@ -18,43 +18,5 @@
 
   <footer class="footer">© Velvet Charms</footer>
 
-  <script>
-    function getQuery(name){ const u = new URLSearchParams(location.search); return u.get(name); }
-    function findProductById(data, id){
-      if(!data) return null;
-      for(const cat of (data.categories||[])){
-        if(cat.products){
-          for(const p of cat.products) if(p.id===id) return p;
-        }
-        if(cat.subcategories){
-          for(const sub of cat.subcategories){
-            for(const p of (sub.products||[])) if(p.id===id) return p;
-          }
-        }
-      }
-      return null;
-    }
-
-    fetch('catalogue.json').then(r => r.json()).then(data=>{
-      const id = getQuery('id');
-      const product = findProductById(data,id);
-      const root = document.getElementById('product-root');
-      if(!product){ root.innerHTML = '<p class="error">Product not found.</p>'; return; }
-      let out = '<div class="product-detail"><h2>'+escapeHtml(product.name)+'</h2>';
-      if(product.images && product.images.length){
-        out += '<div class="gallery">';
-        product.images.forEach(img => {
-          out += '<img src="'+img+'" onerror="this.style.display=\\'none\\'" alt="'+escapeHtml(product.name)+'">';
-        });
-        out += '</div>';
-      }
-      out += '<div class="prod-meta"><p class="price">'+(product.price?product.price+' USD':'Contact for price')+'</p>';
-      out += '<p class="desc">'+escapeHtml(product.description||'')+'</p>';
-      if(product.paymentLink) out += '<p><a class="btn buy" href="'+product.paymentLink+'" target="_blank" rel="noopener">Buy with PayPal</a></p>';
-      out += '</div></div>';
-      root.innerHTML = out;
-    }).catch(e=>{ document.getElementById('product-root').innerHTML = '<p class="error">Failed to load product.</p>'; console.error(e); });
-
-    function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
-  </script>
+  <script src="script.js"></script>
 </body></html>
