@@ -2,8 +2,7 @@
    - expects catalogue.json in the same folder
    - catalogue page: element with id="catalogue-root"
    - product page: element with id="product-root" and ?id=PRODUCTID in URL
-   - uses image fallback: first tries path from JSON, if 404 falls back to basename in root
-   - includes a customization helper (builds an email)
+   - image fallback: first tries path from JSON, if 404 falls back to basename in root
 */
 
 (function () {
@@ -16,6 +15,7 @@
       `;
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundAttachment = "fixed";
+      document.body.style.backgroundRepeat = "no-repeat";
     } catch (e) {}
   }
 
@@ -34,13 +34,9 @@
     setTimeout(() => snow.remove(), 14000);
   }
 
-  // run background init immediately
   initBackground();
-  setInterval(createSnow, 300);
+  setInterval(createSnow, 350);
 
-  // ----------------------
-  // Fetch catalogue.json
-  // ----------------------
   function fetchCatalogue() {
     return fetch('catalogue.json').then(res => {
       if (!res.ok) throw new Error('catalogue.json fetch failed');
@@ -48,13 +44,10 @@
     });
   }
 
-  // ----------------------
-  // Helpers
-  // ----------------------
   function basename(path) {
     if (!path) return path;
     const parts = path.split('/');
-    return parts[parts.length - 1].trim();
+    return parts[parts.length - 1];
   }
 
   function makeImgWithFallback(srcFromJson, alt) {
@@ -63,7 +56,7 @@
     img.src = srcFromJson;
     img.onerror = function () {
       const name = basename(srcFromJson);
-      if (name && (img.src.indexOf(name) === -1)) {
+      if (name && img.src.indexOf(name) === -1) {
         img.src = './' + name;
       } else {
         img.style.display = 'none';
@@ -72,9 +65,6 @@
     return img;
   }
 
-  // ----------------------
-  // Build catalogue grid
-  // ----------------------
   function buildCatalogue(data) {
     const root = document.getElementById('catalogue-root');
     if (!root) return;
@@ -88,7 +78,6 @@
       title.textContent = cat.name;
       catCard.appendChild(title);
 
-      // optional banner
       if (cat.banner) {
         const b = document.createElement('img');
         b.src = cat.banner;
@@ -144,9 +133,6 @@
     });
   }
 
-  // ----------------------
-  // Find product by id
-  // ----------------------
   function findProductById(data, id) {
     if (!data || !id) return null;
     for (const cat of (data.categories || [])) {
@@ -162,9 +148,6 @@
     return null;
   }
 
-  // ----------------------
-  // Render product page (includes customization helper)
-  // ----------------------
   function renderProductPage(data, productId) {
     const container = document.getElementById('product-root');
     if (!container) return;
@@ -186,41 +169,30 @@
         const img = makeImgWithFallback(imgPath, product.name);
         left.appendChild(img);
       });
-    } else {
-      const placeholder = document.createElement('div'); placeholder.textContent = 'No image';
-      left.appendChild(placeholder);
     }
 
     const right = document.createElement('div'); right.className = 'prod-meta';
     const price = document.createElement('p'); price.className = 'price'; price.textContent = product.price ? (product.price + ' USD') : 'Contact for price';
     right.appendChild(price);
 
-    // description
     const desc = document.createElement('p'); desc.className = 'desc'; desc.textContent = product.description || '';
     right.appendChild(desc);
 
-    // options if present
-    if (product.options) {
-      const optWrap = document.createElement('div');
-      optWrap.className = 'options';
-      for (const k in product.options) {
-        const vals = product.options[k];
-        const label = document.createElement('div'); label.style.marginTop='8px';
-        label.innerHTML = '<strong>' + k.charAt(0).toUpperCase()+k.slice(1) + ':</strong>';
-        const select = document.createElement('select');
-        select.name = k;
-        if (Array.isArray(vals)) {
-          vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; select.appendChild(o); });
-        }
-        optWrap.appendChild(label);
-        optWrap.appendChild(select);
-      }
-      right.appendChild(optWrap);
-    }
+    // customization box (free-text + small-file upload note)
+    const cust = document.createElement('div');
+    cust.style.marginTop = '12px';
+    const label = document.createElement('label'); label.textContent = 'Customization / Notes:';
+    label.style.fontWeight = '600'; cust.appendChild(label);
+    const ta = document.createElement('textarea'); ta.rows=4; ta.style.width='100%'; ta.style.marginTop='6px'; ta.placeholder='Color, initials, reference photo link, scent choice, etc.';
+    cust.appendChild(ta);
+    const note = document.createElement('div'); note.style.fontSize='12px'; note.style.color='#444'; note.style.marginTop='6px';
+    note.textContent = 'You can upload one supporting file (image or PDF) using the contact form; for more files message us on Instagram.';
+    cust.appendChild(note);
+    right.appendChild(cust);
 
-    // buy button
     if (product.paymentLink) {
       const buy = document.createElement('p');
+      buy.style.marginTop='12px';
       const a = document.createElement('a');
       a.className = 'btn buy';
       a.href = product.paymentLink;
@@ -231,42 +203,11 @@
       right.appendChild(buy);
     }
 
-    // customization box (notes + one file input) - note: file won't be uploaded to server
-    const customTitle = document.createElement('h4'); customTitle.textContent = 'Customization / Commission';
-    right.appendChild(customTitle);
-    const textarea = document.createElement('textarea'); textarea.className='custom'; textarea.placeholder='Add notes: color, size, text, reference IDs...';
-    right.appendChild(textarea);
-    const fileLabel = document.createElement('label'); fileLabel.style.display='block'; fileLabel.style.marginTop='8px';
-    fileLabel.textContent = 'Attach one supporting file (optional) — customers will be emailed instructions for upload.';
-    right.appendChild(fileLabel);
-    const fileInput = document.createElement('input'); fileInput.type='file'; fileInput.accept='image/*,application/pdf'; fileInput.style.marginTop='6px';
-    right.appendChild(fileInput);
-
-    const sendReq = document.createElement('button'); sendReq.className='btn'; sendReq.style.display='block'; sendReq.style.marginTop='12px'; sendReq.textContent='Send customization request';
-    sendReq.onclick = function(){
-      const bodyParts = [];
-      bodyParts.push('Product: ' + product.name);
-      bodyParts.push('Price: ' + (product.price ? product.price + ' USD' : 'Contact'));
-      bodyParts.push('');
-      bodyParts.push('Customer notes:');
-      bodyParts.push(textarea.value || '[no notes]');
-      bodyParts.push('');
-      bodyParts.push('If you attached a file, please reply to the email with the file attached or message us on Instagram with files.');
-      const mailto = 'mailto:velvetcharmsofficial@example.com'
-        + '?subject=' + encodeURIComponent('Customization request: ' + product.name)
-        + '&body=' + encodeURIComponent(bodyParts.join('\n'));
-      window.open(mailto);
-    };
-    right.appendChild(sendReq);
-
     detail.appendChild(left);
     detail.appendChild(right);
     container.appendChild(detail);
   }
 
-  // ----------------------
-  // On DOM ready, decide which page to render
-  // ----------------------
   document.addEventListener('DOMContentLoaded', function () {
     const catRoot = document.getElementById('catalogue-root');
     const prodRoot = document.getElementById('product-root');
