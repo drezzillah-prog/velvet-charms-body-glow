@@ -23,52 +23,5 @@
 
   <footer class="footer">© Velvet Charms</footer>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      fetch('catalogue.json').then(r => r.json()).then(data => { window.catalogueData = data; buildCatalogue(data); }).catch(e => {
-        document.getElementById('catalogue-root').innerHTML = '<p class="error">Failed to load catalogue.json</p>';
-        console.error(e);
-      });
-    });
-
-    function buildCatalogue(data){
-      const root = document.getElementById('catalogue-root'); root.innerHTML = '';
-      (data.categories||[]).forEach(cat=>{
-        const catCard = document.createElement('section'); catCard.className='cat-card';
-        const title = document.createElement('h3'); title.textContent = cat.name; catCard.appendChild(title);
-        if(cat.banner){
-          const b = document.createElement('img'); b.src=cat.banner; b.alt=cat.name+' banner'; b.style.maxWidth='100%'; b.style.borderRadius='8px'; b.onerror=function(){this.style.display='none'};
-          catCard.appendChild(b);
-        }
-        if(cat.subcategories && cat.subcategories.length){
-          cat.subcategories.forEach(sub=>{
-            const subTitle = document.createElement('h4'); subTitle.textContent = sub.name; catCard.appendChild(subTitle);
-            catCard.appendChild(buildProductGrid(sub.products||[]));
-          });
-        } else {
-          catCard.appendChild(buildProductGrid(cat.products || []));
-        }
-        root.appendChild(catCard);
-      });
-    }
-
-    function buildProductGrid(products){
-      const grid = document.createElement('div'); grid.className='products-grid';
-      products.forEach(p=>{
-        const card = document.createElement('article'); card.className='product-card';
-        const imgWrap = document.createElement('div'); imgWrap.className='thumb';
-        const img = document.createElement('img'); img.alt=p.name;
-        if(Array.isArray(p.images) && p.images.length) img.src = p.images[0];
-        img.onerror = function(){ this.style.display = 'none'; };
-        imgWrap.appendChild(img);
-        card.appendChild(imgWrap);
-        const h = document.createElement('h5'); h.textContent = p.name; card.appendChild(h);
-        const price = document.createElement('div'); price.className='price'; price.textContent = (p.price ? p.price + ' USD' : 'Contact'); card.appendChild(price);
-        const btn = document.createElement('a'); btn.className='btn small'; btn.href='product.html?id='+encodeURIComponent(p.id); btn.textContent='See details';
-        card.appendChild(btn);
-        grid.appendChild(card);
-      });
-      return grid;
-    }
-  </script>
+  <script src="script.js"></script>
 </body></html>
