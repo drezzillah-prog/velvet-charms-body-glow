@@ -3,6 +3,7 @@
    - catalogue page: element with id="catalogue-root"
    - product page: element with id="product-root" and ?id=PRODUCTID in URL
    - uses image fallback: first tries path from JSON, if 404 falls back to basename in root
+   - includes a customization helper (builds an email)
 */
 
 (function () {
@@ -53,21 +54,18 @@
   function basename(path) {
     if (!path) return path;
     const parts = path.split('/');
-    return parts[parts.length - 1];
+    return parts[parts.length - 1].trim();
   }
 
   function makeImgWithFallback(srcFromJson, alt) {
     const img = document.createElement('img');
     img.alt = alt || '';
-    // attempt primary src first
     img.src = srcFromJson;
     img.onerror = function () {
-      // if primary fails, try fallback to filename in root
       const name = basename(srcFromJson);
-      if (name && img.src.indexOf(name) === -1) {
+      if (name && (img.src.indexOf(name) === -1)) {
         img.src = './' + name;
       } else {
-        // last fallback: hide image
         img.style.display = 'none';
       }
     };
@@ -101,21 +99,17 @@
         catCard.appendChild(b);
       }
 
-      const seenProducts = [];
-
       function renderProductsArray(products){
         const grid = document.createElement('div');
         grid.className = 'products-grid';
         (products || []).forEach(p => {
           if (!p || !p.id) return;
-          seenProducts.push(p.id);
           const card = document.createElement('article'); card.className = 'product-card';
           const imgWrap = document.createElement('div'); imgWrap.className = 'thumb';
           if (Array.isArray(p.images) && p.images.length) {
             const img = makeImgWithFallback(p.images[0], p.name);
             imgWrap.appendChild(img);
           } else {
-            // placeholder - hidden if no image
             const img = document.createElement('img');
             img.alt = p.name || '';
             img.style.display = 'none';
@@ -135,7 +129,6 @@
         return grid;
       }
 
-      // subcategories or direct products
       if (cat.subcategories && cat.subcategories.length) {
         cat.subcategories.forEach(sub => {
           const subTitle = document.createElement('h4');
@@ -170,7 +163,7 @@
   }
 
   // ----------------------
-  // Render product page
+  // Render product page (includes customization helper)
   // ----------------------
   function renderProductPage(data, productId) {
     const container = document.getElementById('product-root');
@@ -185,7 +178,6 @@
 
     const title = document.createElement('h2'); title.textContent = product.name; container.appendChild(title);
 
-    // gallery + meta grid
     const detail = document.createElement('div'); detail.className = 'product-detail';
 
     const left = document.createElement('div'); left.className = 'gallery';
@@ -194,15 +186,39 @@
         const img = makeImgWithFallback(imgPath, product.name);
         left.appendChild(img);
       });
+    } else {
+      const placeholder = document.createElement('div'); placeholder.textContent = 'No image';
+      left.appendChild(placeholder);
     }
 
     const right = document.createElement('div'); right.className = 'prod-meta';
     const price = document.createElement('p'); price.className = 'price'; price.textContent = product.price ? (product.price + ' USD') : 'Contact for price';
     right.appendChild(price);
 
+    // description
     const desc = document.createElement('p'); desc.className = 'desc'; desc.textContent = product.description || '';
     right.appendChild(desc);
 
+    // options if present
+    if (product.options) {
+      const optWrap = document.createElement('div');
+      optWrap.className = 'options';
+      for (const k in product.options) {
+        const vals = product.options[k];
+        const label = document.createElement('div'); label.style.marginTop='8px';
+        label.innerHTML = '<strong>' + k.charAt(0).toUpperCase()+k.slice(1) + ':</strong>';
+        const select = document.createElement('select');
+        select.name = k;
+        if (Array.isArray(vals)) {
+          vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; select.appendChild(o); });
+        }
+        optWrap.appendChild(label);
+        optWrap.appendChild(select);
+      }
+      right.appendChild(optWrap);
+    }
+
+    // buy button
     if (product.paymentLink) {
       const buy = document.createElement('p');
       const a = document.createElement('a');
@@ -214,6 +230,34 @@
       buy.appendChild(a);
       right.appendChild(buy);
     }
+
+    // customization box (notes + one file input) - note: file won't be uploaded to server
+    const customTitle = document.createElement('h4'); customTitle.textContent = 'Customization / Commission';
+    right.appendChild(customTitle);
+    const textarea = document.createElement('textarea'); textarea.className='custom'; textarea.placeholder='Add notes: color, size, text, reference IDs...';
+    right.appendChild(textarea);
+    const fileLabel = document.createElement('label'); fileLabel.style.display='block'; fileLabel.style.marginTop='8px';
+    fileLabel.textContent = 'Attach one supporting file (optional) — customers will be emailed instructions for upload.';
+    right.appendChild(fileLabel);
+    const fileInput = document.createElement('input'); fileInput.type='file'; fileInput.accept='image/*,application/pdf'; fileInput.style.marginTop='6px';
+    right.appendChild(fileInput);
+
+    const sendReq = document.createElement('button'); sendReq.className='btn'; sendReq.style.display='block'; sendReq.style.marginTop='12px'; sendReq.textContent='Send customization request';
+    sendReq.onclick = function(){
+      const bodyParts = [];
+      bodyParts.push('Product: ' + product.name);
+      bodyParts.push('Price: ' + (product.price ? product.price + ' USD' : 'Contact'));
+      bodyParts.push('');
+      bodyParts.push('Customer notes:');
+      bodyParts.push(textarea.value || '[no notes]');
+      bodyParts.push('');
+      bodyParts.push('If you attached a file, please reply to the email with the file attached or message us on Instagram with files.');
+      const mailto = 'mailto:velvetcharmsofficial@example.com'
+        + '?subject=' + encodeURIComponent('Customization request: ' + product.name)
+        + '&body=' + encodeURIComponent(bodyParts.join('\n'));
+      window.open(mailto);
+    };
+    right.appendChild(sendReq);
 
     detail.appendChild(left);
     detail.appendChild(right);
@@ -236,7 +280,6 @@
         const productId = url.searchParams.get('id');
         try { renderProductPage(data, productId); } catch (e) { console.error(e); prodRoot.innerHTML = '<p style="color:white">Failed to render product.</p>'; }
       }
-      // save for console debugging
       window._velvet_catalogue = data;
     }).catch(err => {
       console.error('Failed to load catalogue.json', err);
