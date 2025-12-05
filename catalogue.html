@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Catalogue — Velvet Charms</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <h1 class="brand">Velvet Charms</h1>
+      <h1 class="brand">Velvet Charms — <span class="muted">handmade with care</span></h1>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="catalogue.html">Catalogue</a>
+        <a href="catalogue.html" class="active">Catalogue</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -22,9 +22,26 @@
   <main class="main">
     <section id="catalogue-root" class="catalogue-root">
       <!-- JS will render catalogue here -->
-      <p class="loading">Loading catalogue…</p>
+      <p class="muted">Loading catalogue…</p>
     </section>
   </main>
+
+  <aside class="cart-panel" id="cart-panel" aria-hidden="true">
+    <h4>Your cart</h4>
+    <div id="cart-items"></div>
+    <div class="cart-summary">
+      <div>Subtotal: <span id="cart-subtotal">0.00</span> USD</div>
+      <div class="cart-actions">
+        <button id="checkout-btn" class="btn">Checkout</button>
+        <button id="clear-cart" class="btn ghost">Clear</button>
+      </div>
+    </div>
+  </aside>
+
+  <div id="wishlist-panel" class="wishlist-panel" aria-hidden="true">
+    <h4>Wishlist</h4>
+    <div id="wishlist-items"></div>
+  </div>
 
   <footer class="site-footer">
     <p>© Velvet Charms — handmade with care</p>
