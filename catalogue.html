@@ -4,32 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Catalogue — Velvet Charms</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1 class="logo">Velvet Charms</h1>
-      <nav class="main-nav">
-        <a href="./index.html">Home</a>
-        <a href="./catalogue.html">Catalogue</a>
-        <a href="./about.html">About</a>
-        <a href="./contact.html">Contact</a>
+    <div class="header-inner">
+      <h1 class="brand">Velvet Charms</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h2 class="page-title">Catalogue</h2>
-    <div id="catalogue-root" class="catalogue-root"></div>
+  <main class="main">
+    <section id="catalogue-root" class="catalogue-root">
+      <!-- JS will render catalogue here -->
+      <p class="loading">Loading catalogue…</p>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>© Velvet Charms — handmade with care</p>
-    </div>
+    <p>© Velvet Charms — handmade with care</p>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
