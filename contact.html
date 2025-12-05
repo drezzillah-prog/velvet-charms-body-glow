@@ -1,41 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Contact — Velvet Charms</title>
-<link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Velvet Charms</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <h1 class="logo">Velvet Charms</h1>
-    <nav class="main-nav">
-      <a href="./index.html">Home</a>
-      <a href="./catalogue.html">Catalogue</a>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="brand">Velvet Charms — <span class="muted">handmade with care</span></h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<main class="container">
-  <h2>Contact</h2>
-  <p>Have questions or want a commission? Use Instagram or email us at <strong>velvetcharmsstudio@example.com</strong> (replace with your real address) or use this contact form:</p>
+  <main class="main contact-page">
+    <h2>Contact</h2>
+    <p>If you have questions or want a commission, use the form below. You can optionally attach one supporting file (image or PDF).</p>
 
-  <form action="mailto:velvetcharmsstudio@example.com" method="post" enctype="text/plain">
-    <label>Name<br><input name="name" /></label><br>
-    <label>Email<br><input name="email" type="email" /></label><br>
-    <label>Message<br><textarea name="message"></textarea></label><br>
-    <input class="btn" type="submit" value="Send" />
-  </form>
-</main>
+    <form id="contact-form" class="contact-form" enctype="multipart/form-data">
+      <label>
+        Name
+        <input type="text" name="name" required>
+      </label>
 
-<footer class="site-footer">
-  <div class="container">
+      <label>
+        Email
+        <input type="email" name="email" required>
+      </label>
+
+      <label>
+        Message
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+
+      <label>
+        Attachment (optional; single file)
+        <input type="file" name="attachment" accept=".png,.jpg,.jpeg,.pdf">
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Send message</button>
+      </div>
+
+      <div id="contact-result" class="muted" style="margin-top:12px"></div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
     <p>© Velvet Charms — handmade with care</p>
-  </div>
-</footer>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
