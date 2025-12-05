@@ -1,25 +1,41 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Contact — Body & Glow</title><link rel="stylesheet" href="style.css"/></head>
-<body class="site-root">
-  <header class="topbar">
-    <div class="brand">Velvet Charms — Body & Glow</div>
-    <nav class="nav">
-      <a href="index.html">Home</a><a href="catalogue.html">Catalogue</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-      <a class="sister" href="https://velvet-charms-art-gifts.vercel.app">Sister site: Art & Gifts</a>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact — Velvet Charms</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo">Velvet Charms</h1>
+    <nav class="main-nav">
+      <a href="./index.html">Home</a>
+      <a href="./catalogue.html">Catalogue</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <section class="contact-card">
-      <h3>Contact</h3>
-      <p>Questions, custom requests, or extra images to upload? Use the form below or message us on Instagram.</p>
-      <input placeholder="Your name" />
-      <input placeholder="Email" />
-      <textarea placeholder="Message — include product id or description"></textarea>
-      <p style="font-size:13px;color:#444">Note: to upload one image or PDF, reply to our email after purchase or request an upload link in your message.</p>
-    </section>
-  </main>
+<main class="container">
+  <h2>Contact</h2>
+  <p>Have questions or want a commission? Use Instagram or email us at <strong>velvetcharmsstudio@example.com</strong> (replace with your real address) or use this contact form:</p>
 
-  <footer class="footer">© Velvet Charms — Body & Glow</footer>
-  <script src="script.js"></script>
-</body></html>
+  <form action="mailto:velvetcharmsstudio@example.com" method="post" enctype="text/plain">
+    <label>Name<br><input name="name" /></label><br>
+    <label>Email<br><input name="email" type="email" /></label><br>
+    <label>Message<br><textarea name="message"></textarea></label><br>
+    <input class="btn" type="submit" value="Send" />
+  </form>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© Velvet Charms — handmade with care</p>
+  </div>
+</footer>
+
+</body>
+</html>
