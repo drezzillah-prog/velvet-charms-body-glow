@@ -1,76 +1,128 @@
 :root{
-  --bg:#0f0f10;
-  --muted:#cfcfcf;
-  --card:#111214;
-  --accent:#b7792a;
-  --accent-2:#a43b3b;
-  --glass: rgba(255,255,255,0.04);
-  --max-width:1100px;
-  --radius:12px;
+  --bg-dark: #08121a;
+  --muted: #cfe6e8;
+  --accent: #9a5f2a;
+  --card-bg: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.03);
+  --btn-bg: #b86b1a;
+  --btn-text: #fff;
+  --max-w: 1100px;
+  --surface: rgba(255,255,255,0.03);
 }
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter, "Helvetica Neue", Arial, sans-serif;
-  color:#fff;
-  background:linear-gradient(180deg,#071018 0%, #0b0b0c 60%);
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  color:var(--muted);
+  background-color: #07121a;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  padding-bottom:60px;
+  line-height:1.45;
 }
 
-.site-header{background:var(--card);padding:14px 18px;position:sticky;top:0;z-index:30}
-.header-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.brand{font-size:18px;margin:0}
-.muted{color:var(--muted);font-weight:400}
-.nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-weight:500}
-.nav a.active{color:#fff}
+/* Layered christmas backgrounds - graceful fallback if images missing */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    url("./christmaselements5.png"),
+    url("./christmaselements4.png"),
+    url("./christmaselements3.png"),
+    url("./christmaselements2.png"),
+    url("./christmaselements.png");
+  background-repeat: repeat, repeat, repeat, repeat, repeat;
+  background-size: auto, auto, cover, cover, cover;
+  mix-blend-mode: soft-light;
+  opacity:0.95;
+  transform:translateZ(0);
+  will-change:transform, opacity;
+}
 
-.main{max-width:var(--max-width);margin:28px auto;padding:0 18px}
-.hero{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
-.hero h2{margin:0 0 12px 0}
-.lead{color:var(--muted);margin:0 0 18px 0}
-.btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;border:0;cursor:pointer}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
-.btn.small{padding:8px 10px;font-size:14px}
+/* subtle parallax: layers shift via transform on scroll (script sets data attributes) */
+.layered { position: relative; z-index:0; }
 
-.catalogue-root{display:block}
-.cat-card{margin:20px 0;padding:18px;background:var(--glass);border-radius:12px}
-.cat-card h3{margin:0 0 8px 0}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:12px}
-.product-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;display:flex;flex-direction:column;align-items:center}
-.product-card .thumb{width:100%;height:140px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:8px;margin-bottom:8px;background:#0b0b0b}
+/* snowflake */
+.snowflake{
+  position:fixed;
+  z-index: 2;
+  pointer-events:none;
+  background: rgba(255,255,255,0.9);
+  filter: blur(0.2px);
+  border-radius:50%;
+  will-change: transform, opacity;
+}
+
+/* keyframes for snow (important — ensures animation doesn't error) */
+@keyframes snow {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) translateX(20vw) rotate(180deg); opacity: 0.6; }
+}
+
+/* header */
+.site-header{
+  position:relative;
+  z-index:3;
+  padding:14px 12px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.08));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.header-inner{
+  max-width:var(--max-w);
+  margin:0 auto;
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{margin:0;font-size:20px;color:#fff}
+.nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-size:14px}
+
+/* main layout */
+.main{max-width:var(--max-w);margin:28px auto;padding:0 14px;position:relative;z-index:3}
+.hero{padding:30px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+.lead{color:var(--muted);margin-top:8px}
+.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-text);padding:10px 14px;border-radius:10px;text-decoration:none}
+.btn.large{padding:14px 20px;font-weight:600}
+
+/* catalogue */
+.catalogue-root{display:block;margin-top:18px}
+.cat-card{margin-bottom:28px;padding:14px;border-radius:10px;background:var(--card-bg)}
+.cat-card h3{margin:0 0 8px 0;color:#fff}
+.products-grid{
+  display:grid;
+  gap:14px;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  margin-top:12px;
+}
+.product-card{background:var(--glass);padding:12px;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start}
+.product-card .thumb{width:100%;height:140px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;border-radius:8px;overflow:hidden}
 .product-card img{max-width:100%;max-height:100%;object-fit:cover;display:block}
-.product-card h5{margin:8px 0 6px 0;font-size:15px}
-.price{font-weight:700;color:var(--accent-2);margin-bottom:8px}
+.product-card h5{margin:8px 0 6px 0;color:#fff;font-size:15px}
+.price{font-weight:700;color:#ffd9a6;margin-bottom:8px}
+.btn.small{margin-top:auto;padding:8px 10px;font-size:13px;border-radius:8px}
 
-.product-detail{display:flex;gap:20px;flex-wrap:wrap}
-.product-detail .gallery{flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px}
-.product-detail .gallery img{max-width:100%;border-radius:8px}
-.prod-meta{flex:1;min-width:260px}
-.desc{color:var(--muted)}
+/* product page */
+.product-detail{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+.product-detail .gallery img{width:100%;display:block;margin-bottom:8px;border-radius:8px}
+.prod-meta{padding:10px;background:var(--surface);border-radius:10px}
+.desc{white-space:pre-wrap;color:var(--muted);margin-top:8px}
+select,input[type="text"],textarea{width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted);margin-top:8px}
+.custom-box{margin-top:10px}
 
-.contact-form label{display:block;margin-bottom:10px}
-.contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea, .contact-form input[type="file"]{
-  width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff
+/* small screens adjustments */
+@media (max-width:880px){
+  .product-detail{grid-template-columns:1fr}
+  .header-inner{flex-direction:column;align-items:flex-start;gap:10px}
 }
 
-/* cart / wishlist */
-.cart-panel{
-  position:fixed;right:12px;bottom:12px;width:320px;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.5));padding:12px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.7);z-index:60
-}
-.wishlist-panel{position:fixed;left:12px;bottom:12px;width:260px;background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0.4));padding:12px;border-radius:12px;z-index:60}
-.small-muted{font-size:12px;color:var(--muted)}
+/* error / loading */
+.loading{color:var(--muted);padding:12px}
+.error{color:#ffc0c0}
 
-/* background layers (christmas) */
-.bg-layer{position:fixed;inset:0;pointer-events:none;z-index:-1;background-repeat:repeat;opacity:0.18;mix-blend-mode:screen;transform-origin:center}
-.bg-layer.layer-1{opacity:0.12;transform:translateZ(0) scale(1.02)}
-.bg-layer.layer-2{opacity:0.08;filter:blur(2px)}
-.snowflake{position:fixed;z-index:5;pointer-events:none;border-radius:50%}
-
-/* responsive */
-@media (max-width:760px){
-  .products-grid{grid-template-columns:repeat(2,1fr)}
-  .cart-panel{width:90%;right:5%;left:5%}
-}
+/* accessibility focus */
+a:focus,button:focus,input:focus,select:focus,textarea:focus{outline:2px dashed rgba(255,255,255,0.12);outline-offset:3px}
